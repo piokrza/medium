@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterOutlet } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { TopBarComponent } from '@shared/components/top-bar/top-bar.component';
+import { AuthActions } from '@store/auth';
 
-
-const AppImports: Array<any> = [CommonModule, RouterOutlet, MatButtonModule];
+const AppImports: Array<any> = [CommonModule, RouterOutlet, MatButtonModule, TopBarComponent];
 
 @Component({
   selector: 'app-root',
@@ -13,4 +15,10 @@ const AppImports: Array<any> = [CommonModule, RouterOutlet, MatButtonModule];
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {}
+export class AppComponent implements OnInit {
+  private readonly store: Store = inject(Store);
+
+  public ngOnInit(): void {
+    this.store.dispatch(AuthActions.getCurrentUser());
+  }
+}

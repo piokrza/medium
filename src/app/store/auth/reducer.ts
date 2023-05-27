@@ -45,7 +45,19 @@ export const reducer = createReducer(
     return { ...state, isSubmitting: false, errors };
   }),
 
+  // reset errors on every route change
   on(routerNavigatedAction, (state): State => {
     return { ...state, errors: null };
+  }),
+
+  // get current user
+  on(AuthActions.getCurrentUser, (state): State => {
+    return { ...state, isLoading: true };
+  }),
+  on(AuthActions.getCurrentUserSuccess, (state, { currentUser }): State => {
+    return { ...state, isLoading: false, currentUser };
+  }),
+  on(AuthActions.getCurrentUserFailure, (state): State => {
+    return { ...state, isLoading: false, currentUser: null };
   })
 );

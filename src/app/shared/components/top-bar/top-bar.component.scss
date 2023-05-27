@@ -1,0 +1,26 @@
+@use '../../../../assets/styles/variables/colors.scss' as color;
+
+.toolbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__desktop-list {
+    display: flex;
+    list-style: none;
+  }
+
+  &__desktop-link {
+    display: block;
+    padding: 0 2rem;
+    border-radius: 0.25rem;
+    border: 1px solid color.$gray;
+    transition: 250ms;
+
+    &--active,
+    &:hover {
+      background-color: lighten(color.$gray, 30%);
+    }
+  }
+}

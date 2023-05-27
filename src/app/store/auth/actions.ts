@@ -11,3 +11,7 @@ export const registerFailure = createAction('[Auth] Register Failure', props<{ e
 export const login = createAction('[Auth] Login', props<{ request: LoginRequest }>());
 export const loginSuccess = createAction('[Auth] Login Success', props<{ currentUser: CurrentUser }>());
 export const loginFailure = createAction('[Auth] Login Failure', props<{ errors: BackendErrors }>());
+
+export const getCurrentUser = createAction('[Auth] Get current user');
+export const getCurrentUserSuccess = createAction('[Auth] Get current user Success', props<{ currentUser: CurrentUser }>());
+export const getCurrentUserFailure = createAction('[Auth] Get current user Failure');
