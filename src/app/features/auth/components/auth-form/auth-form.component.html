@@ -1,20 +1,27 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <ng-container *ngIf="errorMessages.length">
+    <app-error-messages [errorMessages]="errorMessages" />
+  </ng-container>
+
   <mat-form-field appearance="fill">
     <mat-label>Username</mat-label>
     <input matInput formControlName="username" />
+    <mat-error>Username is required</mat-error>
   </mat-form-field>
 
   <mat-form-field *ngIf="mode === AuthFormMode.REGISTER" appearance="fill">
     <mat-label>Email</mat-label>
     <input matInput formControlName="email" />
+    <mat-error>Email is required</mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Password</mat-label>
     <input matInput formControlName="password" />
+    <mat-error>Password is required</mat-error>
   </mat-form-field>
 
-  <button [disabled]="isLoading" type="submit" mat-button color="primary">
+  <button [disabled]="isSubmitting" type="submit" mat-button color="primary">
     {{ mode === AuthFormMode.REGISTER ? 'Register' : 'Login' }}
   </button>
 </form>

@@ -4,12 +4,21 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { ErrorMessagesComponent } from '@auth/components/error-messages/error-messages.component';
 import { AuthFormMode } from '@auth/enums/auth-form-mode.enum';
 import { AuthFormPayload } from '@auth/models/auth-form-payload.model';
 import { LoginForm, RegisterForm } from '@auth/models/form.model';
 import { AuthFormService } from '@auth/services/auth-form.service';
+import { BackendErrors } from '@core/models/backend-errors.model';
 
-const AuthFormImports: Array<any> = [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule];
+const AuthFormImports: Array<any> = [
+  CommonModule,
+  ReactiveFormsModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatButtonModule,
+  ErrorMessagesComponent,
+];
 const AuthFormProviders: Array<any> = [AuthFormService];
 
 @Component({
@@ -24,11 +33,15 @@ const AuthFormProviders: Array<any> = [AuthFormService];
 export class AuthFormComponent {
   @Input() public form!: FormGroup<RegisterForm> | FormGroup<LoginForm>;
   @Input() public mode!: AuthFormMode;
-  @Input() public isLoading: boolean = false;
+  @Input() public isSubmitting: boolean = false;
+  @Input() set errors(errors: BackendErrors | null) {
+    this.errorMessages = this.setErrorMessages(errors);
+  }
 
   @Output() public formSubmit: EventEmitter<AuthFormPayload> = new EventEmitter<AuthFormPayload>();
 
   public AuthFormMode = AuthFormMode;
+  public errorMessages: string[] = [];
 
   public onSubmit(): void {
     if (this.form.invalid) {
@@ -36,6 +49,15 @@ export class AuthFormComponent {
       return;
     }
 
-    this.formSubmit.emit(<AuthFormPayload>this.form.getRawValue());
+    this.formSubmit.emit(this.form.getRawValue());
+  }
+
+  private setErrorMessages(errors: BackendErrors | null): string[] {
+    if (errors === null) return [];
+
+    return Object.keys(errors).map((name: string): string => {
+      const messages: string = errors[name].join(' ');
+      return `${name} ${messages}`;
+    });
   }
 }
