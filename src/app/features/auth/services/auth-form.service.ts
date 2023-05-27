@@ -10,14 +10,14 @@ export class AuthFormService {
     return this.fb.nonNullable.group({
       username: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
   public getLoginForm(): FormGroup<LoginForm> {
     return this.fb.nonNullable.group({
-      username: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 }

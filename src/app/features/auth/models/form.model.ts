@@ -6,4 +6,4 @@ export type RegisterForm = {
   password: FormControl<string>;
 };
 
-export type LoginForm = Omit<RegisterForm, 'email'>;
+export type LoginForm = Omit<RegisterForm, 'username'>;

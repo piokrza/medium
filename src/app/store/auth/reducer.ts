@@ -1,5 +1,6 @@
 import { CurrentUser } from '@auth/models/current-user.model';
 import { BackendErrors } from '@core/models/backend-errors.model';
+import { routerNavigatedAction } from '@ngrx/router-store';
 import { createReducer, on } from '@ngrx/store';
 import { AuthActions } from '@store/auth';
 
@@ -22,6 +23,7 @@ const initialState: State = {
 export const reducer = createReducer(
   initialState,
 
+  // register
   on(AuthActions.register, (state): State => {
     return { ...state, isSubmitting: true };
   }),
@@ -30,5 +32,20 @@ export const reducer = createReducer(
   }),
   on(AuthActions.registerFailure, (state, { errors }): State => {
     return { ...state, isSubmitting: false, errors };
+  }),
+
+  // login
+  on(AuthActions.login, (state): State => {
+    return { ...state, isSubmitting: true };
+  }),
+  on(AuthActions.loginSuccess, (state, { currentUser }): State => {
+    return { ...state, isSubmitting: false, currentUser };
+  }),
+  on(AuthActions.loginFailure, (state, { errors }): State => {
+    return { ...state, isSubmitting: false, errors };
+  }),
+
+  on(routerNavigatedAction, (state): State => {
+    return { ...state, errors: null };
   })
 );

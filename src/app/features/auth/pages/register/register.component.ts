@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { AuthFormComponent } from '@auth/components/auth-form/auth-form.component';
 import { AuthFormMode } from '@auth/enums/auth-form-mode.enum';
 import { AuthFormPayload } from '@auth/models/auth-form-payload.model';
@@ -12,7 +13,7 @@ import { Store } from '@ngrx/store';
 import { AuthActions, AuthSelectors } from '@store/auth';
 import { Observable } from 'rxjs';
 
-const RegisterImports: Array<any> = [CommonModule, AuthFormComponent];
+const RegisterImports: Array<any> = [CommonModule, AuthFormComponent, RouterModule];
 const RegisterProviders: Array<any> = [AuthFormService];
 @Component({
   selector: 'app-register',

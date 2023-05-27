@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { CurrentUser } from '@auth/models/current-user.model';
+import { LoginRequest } from '@auth/models/login-request.model';
 import { RegisterRequest } from '@auth/models/register-request.model';
 import { AuthService } from '@auth/services/auth.service';
 import { AccessToken } from '@core/constants/access-token';
@@ -37,6 +38,39 @@ export const redirectAfterRegisterSuccess = createEffect(
   (actions$ = inject(Actions), router = inject(Router)) => {
     return actions$.pipe(
       ofType(AuthActions.registerSuccess),
+      tap((): void => {
+        router.navigateByUrl('/');
+      })
+    );
+  },
+  { functional: true, dispatch: false }
+);
+
+export const loginEffect = createEffect(
+  (actions$ = inject(Actions), authService = inject(AuthService), persistanceService = inject(PersistanceService)) => {
+    return actions$.pipe(
+      ofType(AuthActions.login),
+      exhaustMap(({ request }) => {
+        return authService.login$(<LoginRequest>request).pipe(
+          map((currentUser: CurrentUser) => {
+            persistanceService.set(AccessToken, currentUser.token);
+            return AuthActions.loginSuccess({ currentUser });
+          }),
+          catchError((err: HttpErrorResponse) => {
+            const errors = err.error.errors as BackendErrors;
+            return of(AuthActions.loginFailure({ errors }));
+          })
+        );
+      })
+    );
+  },
+  { functional: true }
+);
+
+export const redirectAfterLoginSuccess = createEffect(
+  (actions$ = inject(Actions), router = inject(Router)) => {
+    return actions$.pipe(
+      ofType(AuthActions.loginSuccess),
       tap((): void => {
         router.navigateByUrl('/');
       })

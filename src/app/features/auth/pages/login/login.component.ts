@@ -1,13 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { AuthFormComponent } from '@auth/components/auth-form/auth-form.component';
 import { AuthFormMode } from '@auth/enums/auth-form-mode.enum';
 import { AuthFormPayload } from '@auth/models/auth-form-payload.model';
 import { LoginForm } from '@auth/models/form.model';
+import { LoginRequest } from '@auth/models/login-request.model';
 import { AuthFormService } from '@auth/services/auth-form.service';
+import { BackendErrors } from '@core/models/backend-errors.model';
+import { Store } from '@ngrx/store';
+import { AuthActions, AuthSelectors } from '@store/auth';
+import { Observable } from 'rxjs';
 
-const LoginImports: Array<any> = [CommonModule, AuthFormComponent];
+const LoginImports: Array<any> = [CommonModule, AuthFormComponent, RouterModule];
 const LoginProviders: Array<any> = [AuthFormService];
 @Component({
   selector: 'app-login',
@@ -19,9 +25,17 @@ const LoginProviders: Array<any> = [AuthFormService];
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class LoginComponent {
-  public loginForm: FormGroup<LoginForm> = inject(AuthFormService).getLoginForm();
+  private store: Store = inject(Store);
 
+  public loginErrors$: Observable<BackendErrors | null> = this.store.select(AuthSelectors.errors);
+  public isLoading$: Observable<boolean> = this.store.select(AuthSelectors.isLoading);
+  public isSubmitting$: Observable<boolean> = this.store.select(AuthSelectors.isSubmitting);
+
+  public loginForm: FormGroup<LoginForm> = inject(AuthFormService).getLoginForm();
   public authFormMode = AuthFormMode;
 
-  public onFormSubmit(loginFormPayload: AuthFormPayload): void {}
+  public onFormSubmit(user: AuthFormPayload): void {
+    console.log(user);
+    this.store.dispatch(AuthActions.login({ request: { user } as LoginRequest }));
+  }
 }

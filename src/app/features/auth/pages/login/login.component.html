@@ -1,3 +1,9 @@
 <h1 class="title">Login</h1>
+<a [routerLink]="['../register']" class="text-center redirection-link">Need an account?</a>
 
-<app-auth-form [form]="loginForm" [mode]="authFormMode.LOGIN" (formSubmit)="onFormSubmit($event)" />
+<app-auth-form
+  [form]="loginForm"
+  [mode]="authFormMode.LOGIN"
+  [isSubmitting]="(isSubmitting$ | async)!"
+  [errors]="loginErrors$ | async"
+  (formSubmit)="onFormSubmit($event)" />
