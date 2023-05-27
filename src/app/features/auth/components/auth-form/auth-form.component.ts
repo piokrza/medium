@@ -24,11 +24,18 @@ const AuthFormProviders: Array<any> = [AuthFormService];
 export class AuthFormComponent {
   @Input() public form!: FormGroup<RegisterForm> | FormGroup<LoginForm>;
   @Input() public mode!: AuthFormMode;
+  @Input() public isLoading: boolean = false;
+
   @Output() public formSubmit: EventEmitter<AuthFormPayload> = new EventEmitter<AuthFormPayload>();
 
   public AuthFormMode = AuthFormMode;
 
   public onSubmit(): void {
-    this.formSubmit.emit(this.form.getRawValue());
+    if (this.form.invalid) {
+      this.form.markAsDirty();
+      return;
+    }
+
+    this.formSubmit.emit(<AuthFormPayload>this.form.getRawValue());
   }
 }

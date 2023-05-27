@@ -8,7 +8,8 @@ import { RegisterForm } from '@auth/models/form.model';
 import { RegisterRequest } from '@auth/models/register-request.model';
 import { AuthFormService } from '@auth/services/auth-form.service';
 import { Store } from '@ngrx/store';
-import { AuthActions } from '@store/auth';
+import { AuthActions, AuthSelectors } from '@store/auth';
+import { Observable } from 'rxjs';
 
 const RegisterImports: Array<any> = [CommonModule, AuthFormComponent];
 const RegisterProviders: Array<any> = [AuthFormService];
@@ -23,6 +24,8 @@ const RegisterProviders: Array<any> = [AuthFormService];
 })
 export default class RegisterComponent {
   private readonly store: Store = inject(Store);
+
+  public isLoading$: Observable<boolean> = this.store.select(AuthSelectors.isLoading);
 
   public readonly registerForm: FormGroup<RegisterForm> = inject(AuthFormService).getRegisterForm();
   public readonly authFormMode = AuthFormMode;

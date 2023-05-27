@@ -1,3 +1,7 @@
 <h1 class="title">Register</h1>
 
-<app-auth-form [form]="registerForm" [mode]="authFormMode.REGISTER" (formSubmit)="onRegisterFormSubmit($event)" />
+<app-auth-form
+  [form]="registerForm"
+  [mode]="authFormMode.REGISTER"
+  [isLoading]="(isLoading$ | async)!"
+  (formSubmit)="onRegisterFormSubmit($event)" />
