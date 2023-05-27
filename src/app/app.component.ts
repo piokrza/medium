@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { RouterOutlet } from '@angular/router';
 
-import { MatButtonModule } from '@angular/material/button';
 
 const AppImports: Array<any> = [CommonModule, RouterOutlet, MatButtonModule];
 

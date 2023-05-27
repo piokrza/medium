@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { AuthForm } from '@auth/models/auth-form.model';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { AuthForm } from '@auth/models/auth-form.model';
 
 const AuthFormImports: Array<any> = [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule];
 

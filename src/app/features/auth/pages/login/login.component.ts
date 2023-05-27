@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 import { AuthFormComponent } from '@auth/components/auth-form/auth-form.component';
 
 const LoginImports: Array<any> = [CommonModule, AuthFormComponent];
