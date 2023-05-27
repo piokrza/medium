@@ -7,6 +7,7 @@ import { AuthFormPayload } from '@auth/models/auth-form-payload.model';
 import { RegisterForm } from '@auth/models/form.model';
 import { RegisterRequest } from '@auth/models/register-request.model';
 import { AuthFormService } from '@auth/services/auth-form.service';
+import { BackendErrors } from '@core/models/backend-errors.model';
 import { Store } from '@ngrx/store';
 import { AuthActions, AuthSelectors } from '@store/auth';
 import { Observable } from 'rxjs';
@@ -25,7 +26,9 @@ const RegisterProviders: Array<any> = [AuthFormService];
 export default class RegisterComponent {
   private readonly store: Store = inject(Store);
 
+  public registerErrors$: Observable<BackendErrors | null> = this.store.select(AuthSelectors.errors);
   public isLoading$: Observable<boolean> = this.store.select(AuthSelectors.isLoading);
+  public isSubmitting$: Observable<boolean> = this.store.select(AuthSelectors.isSubmitting);
 
   public readonly registerForm: FormGroup<RegisterForm> = inject(AuthFormService).getRegisterForm();
   public readonly authFormMode = AuthFormMode;
