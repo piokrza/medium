@@ -8,6 +8,10 @@ const AuthImports: Array<any> = [CommonModule, RouterOutlet];
   selector: 'app-auth',
   standalone: true,
   imports: AuthImports,
-  template: `<section><router-outlet /></section>`,
+  template: `
+    <section>
+      <router-outlet />
+    </section>
+  `,
 })
 export default class AuthComponent {}

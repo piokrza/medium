@@ -4,6 +4,6 @@
 <app-auth-form
   [form]="loginForm"
   [mode]="authFormMode.LOGIN"
-  [isSubmitting]="(isSubmitting$ | async)!"
   [errors]="loginErrors$ | async"
+  [isSubmitting]="(isSubmitting$ | async)!"
   (formSubmit)="onFormSubmit($event)" />

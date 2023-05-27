@@ -4,6 +4,6 @@
 <app-auth-form
   [form]="registerForm"
   [mode]="authFormMode.REGISTER"
-  [isSubmitting]="(isSubmitting$ | async)!"
   [errors]="registerErrors$ | async"
+  [isSubmitting]="(isSubmitting$ | async)!"
   (formSubmit)="onRegisterFormSubmit($event)" />

@@ -27,15 +27,14 @@ const LoginProviders: Array<any> = [AuthFormService];
 export default class LoginComponent {
   private store: Store = inject(Store);
 
-  public loginErrors$: Observable<BackendErrors | null> = this.store.select(AuthSelectors.errors);
   public isLoading$: Observable<boolean> = this.store.select(AuthSelectors.isLoading);
   public isSubmitting$: Observable<boolean> = this.store.select(AuthSelectors.isSubmitting);
+  public loginErrors$: Observable<BackendErrors | null> = this.store.select(AuthSelectors.errors);
 
   public loginForm: FormGroup<LoginForm> = inject(AuthFormService).getLoginForm();
   public authFormMode = AuthFormMode;
 
   public onFormSubmit(user: AuthFormPayload): void {
-    console.log(user);
     this.store.dispatch(AuthActions.login({ request: { user } as LoginRequest }));
   }
 }

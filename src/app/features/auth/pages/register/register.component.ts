@@ -27,9 +27,9 @@ const RegisterProviders: Array<any> = [AuthFormService];
 export default class RegisterComponent {
   private readonly store: Store = inject(Store);
 
-  public registerErrors$: Observable<BackendErrors | null> = this.store.select(AuthSelectors.errors);
   public isLoading$: Observable<boolean> = this.store.select(AuthSelectors.isLoading);
   public isSubmitting$: Observable<boolean> = this.store.select(AuthSelectors.isSubmitting);
+  public registerErrors$: Observable<BackendErrors | null> = this.store.select(AuthSelectors.errors);
 
   public readonly registerForm: FormGroup<RegisterForm> = inject(AuthFormService).getRegisterForm();
   public readonly authFormMode = AuthFormMode;

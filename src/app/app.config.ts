@@ -13,15 +13,14 @@ import { routes } from 'src/app/app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes),
     provideAnimations(),
+    provideRouter(routes),
     provideHttpClient(withInterceptors([authInterceptor])),
 
     // NgRx
-    provideEffects(authEffects),
-    provideStore(ROOT_REDUCER),
-    provideEffects(),
     provideRouterStore(),
+    provideStore(ROOT_REDUCER),
+    provideEffects(authEffects),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),
