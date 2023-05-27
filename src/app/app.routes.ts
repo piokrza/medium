@@ -4,6 +4,10 @@ import { Route } from '@core/enums/route.enum';
 
 export const routes: Routes = [
   {
+    path: '',
+    loadComponent: () => import('@global-feed/global-feed.component'),
+  },
+  {
     path: Route.Authentication,
     loadComponent: () => import('@auth/auth.component'),
     children: [
