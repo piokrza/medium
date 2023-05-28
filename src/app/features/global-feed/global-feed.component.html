@@ -1,1 +1,12 @@
-<p>global-feed works!</p>
+<div class="feed">
+  <app-banner />
+
+  <div class="feed__page">
+    <div>FEED TOGGLER</div>
+
+    <div class="feed__content">
+      <div>POPULAR TAGS</div>
+      <app-feed [apiUrl]="apiUrl" />
+    </div>
+  </div>
+</div>

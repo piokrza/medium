@@ -3,8 +3,8 @@ import { Component, OnInit, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { TopBarComponent } from '@shared/components/top-bar/top-bar.component';
 import { AuthActions } from '@store/auth';
+import { TopBarComponent } from '@ui/top-bar/top-bar.component';
 
 const AppImports: Array<any> = [CommonModule, RouterOutlet, MatButtonModule, TopBarComponent];
 

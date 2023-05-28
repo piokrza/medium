@@ -1,3 +1,5 @@
+import { Profile } from '@core/models/profile.model';
+
 export interface Article {
   body: string;
   description: string;
@@ -8,5 +10,5 @@ export interface Article {
   title: string;
   createdAt: string;
   updatedAt: string;
-  //TODO: add author interface
+  author: Profile;
 }

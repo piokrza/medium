@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
@@ -33,5 +33,5 @@ const TopBarImports: Array<any> = [
 export class TopBarComponent {
   private readonly store: Store = inject(Store);
 
-  public currentUser$: Observable<CurrentUser | null | undefined> = this.store.select(AuthSelectors.currentUser);
+  public readonly currentUser$: Observable<CurrentUser | null | undefined> = this.store.select(AuthSelectors.currentUser);
 }

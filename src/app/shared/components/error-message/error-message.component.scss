@@ -1,0 +1,5 @@
+@use '../../../../assets/styles/variables/colors.scss' as color;
+
+.error {
+  color: color.$danger;
+}

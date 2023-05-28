@@ -1,0 +1,44 @@
+<section>
+  <ng-container *ngIf="isLoading$ | async; else loaded">
+    <div class="center">
+      <mat-spinner [diameter]="25" />
+    </div>
+  </ng-container>
+
+  <ng-template #loaded>
+    <ng-container *ngIf="errors$ | async as errors">
+      <!-- <app-error-message [message]="errors" /> -->
+    </ng-container>
+
+    <div *ngIf="feedData$ | async as feed" class="cards-wrapper">
+      <mat-card *ngFor="let article of feed.articles" class="article">
+        <div class="article__meta">
+          <div class="article__info">
+            <a [routerLink]="['/profiles', article.author.username]" class="article__info-link">
+              <img [src]="article.author.image" />
+            </a>
+
+            <div class="article__info-user">
+              <a [routerLink]="['/profiles', article.author.username]" class="hovered-link">
+                {{ article.author.username | titlecase }}
+              </a>
+              <span class="article__date">
+                {{ article.createdAt | date }}
+              </span>
+            </div>
+          </div>
+          <div>ADD TO FAVOURITES</div>
+        </div>
+
+        <a [routerLink]="['/articles', article.slug]" class="article__content">
+          <h1 class="article__content-title">{{ article.title }}</h1>
+          <p>{{ article.description }}</p>
+          <span>Read more...</span>
+          TAG LIST
+        </a>
+      </mat-card>
+
+      <app-paginator [total]="feed.articlesCount" [limit]="limit" [url]="baseUrl" [currentPage]="currentPage" />
+    </div>
+  </ng-template>
+</section>

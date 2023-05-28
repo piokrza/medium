@@ -3,7 +3,17 @@
   text-align: center;
 }
 
+.hovered-link:hover {
+  text-decoration: underline;
+}
+
 // sizing
 .w-full {
   width: 100%;
+}
+
+// positioning
+.center {
+  display: grid;
+  align-items: center;
 }

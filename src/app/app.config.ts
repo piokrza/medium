@@ -8,19 +8,23 @@ import { provideRouterStore } from '@ngrx/router-store';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import * as authEffects from '@store/auth/effects';
+import * as feedEffects from '@store/feed/effects';
 import { ROOT_REDUCER } from '@store/root-reducer';
 import { routes } from 'src/app/app.routes';
+
+const StoreEffects: Array<any> = [authEffects, feedEffects];
+const Interceptors: Array<any> = [authInterceptor];
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideAnimations(),
     provideRouter(routes),
-    provideHttpClient(withInterceptors([authInterceptor])),
+    provideHttpClient(withInterceptors(Interceptors)),
 
     // NgRx
     provideRouterStore(),
     provideStore(ROOT_REDUCER),
-    provideEffects(authEffects),
+    provideEffects(StoreEffects),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),

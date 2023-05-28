@@ -1,6 +1,6 @@
 import { Article } from '@core/models/article.model';
 
 export interface GetFeedResponse {
-  article: Article;
+  articles: Article[];
   articlesCount: number;
 }

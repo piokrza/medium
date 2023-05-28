@@ -10,6 +10,6 @@ export class FeedService {
   private readonly baseApiUrl: string = environment.baseApiUrl;
 
   public getFeed$(url: string): Observable<GetFeedResponse> {
-    return this.http.get<GetFeedResponse>(`${this.baseApiUrl}/url`);
+    return this.http.get<GetFeedResponse>(`${this.baseApiUrl}/${url}`);
   }
 }

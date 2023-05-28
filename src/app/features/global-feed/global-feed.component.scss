@@ -1,0 +1,10 @@
+@use '../../../assets/styles/variables/sizes.scss' as sizes;
+
+@media (min-width: sizes.$md) {
+  .feed {
+    &__content {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+}
