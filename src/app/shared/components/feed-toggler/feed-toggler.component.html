@@ -1,5 +1,5 @@
 <div class="toggler">
-  <ul class="toggler__list">
+  <ul class="container-max-w-lg toggler__list">
     <li *ngIf="currentUser$ | async" class="toggler__item" routerLinkActive="toggler__item--active">
       <a [routerLink]="['/feed']">Your feed</a>
     </li>

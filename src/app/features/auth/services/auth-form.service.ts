@@ -16,8 +16,8 @@ export class AuthFormService {
 
   public getLoginForm(): FormGroup<LoginForm> {
     return this.fb.nonNullable.group({
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
     });
   }
 }

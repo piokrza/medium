@@ -1,18 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FeedComponent } from '@shared/components/feed/feed.component';
-import { FeedTogglerComponent } from '@shared/components/feed-toggler/feed-toggler.component';
-import { PopularTagsComponent } from '@shared/components/popular-tags/popular-tags.component';
-import { BannerComponent } from '@ui/banner/banner.component';
+import { FeedContainerComponent } from '@ui/feed-container/feed-container.component';
 
-const GlobalFeedImports: Array<any> = [CommonModule, FeedComponent, BannerComponent, PopularTagsComponent, FeedTogglerComponent];
+const GlobalFeedImports: Array<any> = [CommonModule, FeedContainerComponent];
 
 @Component({
   selector: 'app-global-feed',
   standalone: true,
   imports: GlobalFeedImports,
-  templateUrl: './global-feed.component.html',
-  styleUrls: ['./global-feed.component.scss'],
+  template: `<app-feed-container [apiUrl]="apiUrl" />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class GlobalFeedComponent {

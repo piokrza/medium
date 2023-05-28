@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -39,6 +39,14 @@ export class AuthFormComponent {
   }
 
   @Output() public formSubmit: EventEmitter<AuthFormPayload> = new EventEmitter<AuthFormPayload>();
+
+  get email(): FormControl<string> {
+    return this.form.controls.email;
+  }
+
+  get password(): FormControl<string> {
+    return this.form.controls.password;
+  }
 
   public AuthFormMode = AuthFormMode;
   public errorMessages: string[] = [];
