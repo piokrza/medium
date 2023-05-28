@@ -25,6 +25,7 @@
       "@global-feed/*": ["src/app/features/global-feed/*"],
       "@your-feed/*": ["src/app/features/your-feed/*"],
       "@tag-feed/*": ["src/app/features/tag-feed/*"],
+      "@article/*": ["src/app/features/article/*"],
       "@ui/*": ["src/app/features/ui/*"],
       "@store/*": ["src/app/store/*"],
       "@core/*": ["src/app/core/*"],
