@@ -11,6 +11,7 @@ import { Store } from '@ngrx/store';
 import { ErrorMessageComponent } from '@shared/components/error-message/error-message.component';
 import { PaginatorComponent } from '@shared/components/paginator/paginator.component';
 import { FeedActions, FeedSelectors } from '@store/feed';
+import queryString from 'query-string';
 import { Observable, takeUntil } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 
@@ -58,6 +59,15 @@ export class FeedComponent extends DestroyComponent implements OnInit {
   }
 
   private loadFeed(): void {
-    this.store.dispatch(FeedActions.getFeed({ url: this.apiUrl }));
+    const offset: number = this.currentPage * this.limit - this.limit;
+    const parsedUrl: queryString.ParsedUrl = queryString.parseUrl(this.apiUrl);
+    const stringifiedParams = queryString.stringify({
+      limit: this.limit,
+      offset,
+      ...parsedUrl.query,
+    });
+    const apiUrlWithParams: string = `${parsedUrl.url}?${stringifiedParams}`;
+
+    this.store.dispatch(FeedActions.getFeed({ url: apiUrlWithParams }));
   }
 }
