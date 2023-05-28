@@ -1,11 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { DestroyComponent } from '@core/abstracts/destroy/destroy.component';
-import { BackendErrors } from '@core/models/backend-errors.model';
 import { GetFeedResponse } from '@core/models/get-feed-response.model';
 import { Store } from '@ngrx/store';
 import { ErrorMessageComponent } from '@shared/components/error-message/error-message.component';
@@ -35,7 +34,7 @@ const FeedImports: Array<any> = [
   styleUrls: ['./feed.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FeedComponent extends DestroyComponent implements OnInit {
+export class FeedComponent extends DestroyComponent implements OnInit, OnChanges {
   @Input() public apiUrl: string = '';
 
   private readonly store: Store = inject(Store);
@@ -48,6 +47,12 @@ export class FeedComponent extends DestroyComponent implements OnInit {
   public currentPage: number = 0;
   public readonly limit: number = environment.paginationLimit;
   public readonly baseUrl: string = inject(Router).url.split('?')[0];
+
+  public ngOnChanges(changes: SimpleChanges): void {
+    const isApiUrlChanged: boolean = !changes['apiUrl'].firstChange && changes['apiUrl'].currentValue !== changes['apiUrl'].previousValue;
+
+    if (isApiUrlChanged) this.loadFeed();
+  }
 
   public ngOnInit(): void {
     this.loadFeed();
