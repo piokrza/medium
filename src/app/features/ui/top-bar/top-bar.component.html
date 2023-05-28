@@ -12,7 +12,7 @@
       <button [routerLink]="['/']" mat-menu-item>
         <span>Home</span>
       </button>
-      <ng-container *ngIf="currentUser$ | async as currentUser">
+      <ng-container *ngIf="currentUser$ | async as currentUser; else authLinks">
         <button [routerLink]="['/articles/new']" mat-menu-item>
           <span>New Post</span>
         </button>
@@ -26,6 +26,16 @@
           </span>
         </button>
       </ng-container>
+
+      <ng-template #authLinks>
+        <button [routerLink]="['/authentication/login']" mat-menu-item>
+          <span>Login</span>
+        </button>
+
+        <button [routerLink]="['/authentication/register']" mat-menu-item>
+          <span>Register</span>
+        </button>
+      </ng-template>
     </mat-menu>
   </div>
 

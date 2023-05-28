@@ -7,7 +7,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   imports: [CommonModule],
   template: `
     <footer>
-      <div class="text-center">Medium, app build with Angular 16</div>
+      <div class="text-center">Medium, app built with Angular 16</div>
     </footer>
   `,
   styleUrls: ['./footer.component.scss'],
