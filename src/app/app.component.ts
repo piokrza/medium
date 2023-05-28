@@ -4,16 +4,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthActions } from '@store/auth';
-import { TopBarComponent } from '@ui/top-bar/top-bar.component';
+import { LayoutComponent } from '@ui/layout/layout.component';
 
-const AppImports: Array<any> = [CommonModule, RouterOutlet, MatButtonModule, TopBarComponent];
+const AppImports: Array<any> = [CommonModule, RouterOutlet, MatButtonModule, LayoutComponent];
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: AppImports,
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  template: `
+    <app-layout>
+      <router-outlet></router-outlet>
+    </app-layout>
+  `,
 })
 export class AppComponent implements OnInit {
   private readonly store: Store = inject(Store);
