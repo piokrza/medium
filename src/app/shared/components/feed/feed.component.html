@@ -6,8 +6,8 @@
   </ng-container>
 
   <ng-template #loaded>
-    <ng-container *ngIf="errors$ | async as errors">
-      <!-- <app-error-message [message]="errors" /> -->
+    <ng-container *ngIf="error$ | async as error">
+      <app-error-message [message]="error" />
     </ng-container>
 
     <div *ngIf="feedData$ | async as feed" class="cards-wrapper">
@@ -34,7 +34,7 @@
           <h1 class="article__content-title">{{ article.title }}</h1>
           <p>{{ article.description }}</p>
           <span>Read more...</span>
-          TAG LIST
+          <app-tag-list [tagList]="article.tagList" />
         </a>
       </mat-card>
 

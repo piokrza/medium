@@ -10,6 +10,7 @@ import { GetFeedResponse } from '@core/models/get-feed-response.model';
 import { Store } from '@ngrx/store';
 import { ErrorMessageComponent } from '@shared/components/error-message/error-message.component';
 import { PaginatorComponent } from '@shared/components/paginator/paginator.component';
+import { TagListComponent } from '@shared/components/tag-list/tag-list.component';
 import { FeedActions, FeedSelectors } from '@store/feed';
 import queryString from 'query-string';
 import { Observable, takeUntil } from 'rxjs';
@@ -23,6 +24,7 @@ const FeedImports: Array<any> = [
   MatProgressSpinnerModule,
   ErrorMessageComponent,
   PaginatorComponent,
+  TagListComponent,
 ];
 
 @Component({
@@ -40,7 +42,7 @@ export class FeedComponent extends DestroyComponent implements OnInit {
   private readonly route: ActivatedRoute = inject(ActivatedRoute);
 
   public readonly feedData$: Observable<GetFeedResponse | null> = this.store.select(FeedSelectors.feedData);
-  public readonly errors$: Observable<BackendErrors | null> = this.store.select(FeedSelectors.errors);
+  public readonly error$: Observable<string | null> = this.store.select(FeedSelectors.errors);
   public readonly isLoading$: Observable<boolean> = this.store.select(FeedSelectors.isLoading);
 
   public currentPage: number = 0;
@@ -61,11 +63,8 @@ export class FeedComponent extends DestroyComponent implements OnInit {
   private loadFeed(): void {
     const offset: number = this.currentPage * this.limit - this.limit;
     const parsedUrl: queryString.ParsedUrl = queryString.parseUrl(this.apiUrl);
-    const stringifiedParams = queryString.stringify({
-      limit: this.limit,
-      offset,
-      ...parsedUrl.query,
-    });
+    const stringifiedParams: string = queryString.stringify({ limit: this.limit, offset, ...parsedUrl.query });
+
     const apiUrlWithParams: string = `${parsedUrl.url}?${stringifiedParams}`;
 
     this.store.dispatch(FeedActions.getFeed({ url: apiUrlWithParams }));

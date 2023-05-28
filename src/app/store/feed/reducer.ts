@@ -1,4 +1,3 @@
-import { BackendErrors } from '@core/models/backend-errors.model';
 import { GetFeedResponse } from '@core/models/get-feed-response.model';
 import { routerNavigatedAction } from '@ngrx/router-store';
 import { createReducer, on } from '@ngrx/store';
@@ -9,7 +8,7 @@ export const FeatureKey = 'feed';
 export interface State {
   feed: GetFeedResponse | null;
   isLoading: boolean;
-  errors: BackendErrors | null;
+  errors: string | null;
 }
 
 const initialState: State = {

@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FeedComponent } from '@shared/components/feed/feed.component';
+import { PopularTagsComponent } from '@shared/components/popular-tags/popular-tags.component';
 import { BannerComponent } from '@ui/banner/banner.component';
 
-const GlobalFeedImports: Array<any> = [CommonModule, FeedComponent, BannerComponent];
+const GlobalFeedImports: Array<any> = [CommonModule, FeedComponent, BannerComponent, PopularTagsComponent];
 
 @Component({
   selector: 'app-global-feed',

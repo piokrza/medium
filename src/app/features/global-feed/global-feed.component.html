@@ -1,11 +1,14 @@
 <div class="feed">
   <app-banner />
 
-  <div class="feed__page">
-    <div>FEED TOGGLER</div>
+  <div class="my-1">FEED TOGGLER</div>
 
-    <div class="feed__content">
-      <div>POPULAR TAGS</div>
+  <div class="feed__content">
+    <div class="my-1">
+      <app-popular-tags />
+    </div>
+
+    <div class="my-1">
       <app-feed [apiUrl]="apiUrl" />
     </div>
   </div>
