@@ -16,6 +16,10 @@ export const routes: Routes = [
     loadComponent: () => import('@tag-feed/tag-feed.component'),
   },
   {
+    path: `${Route.Articles}${RouteFragment.Slug}`,
+    loadComponent: () => import('@article/article.component'),
+  },
+  {
     path: Route.Authentication,
     loadComponent: () => import('@auth/auth.component'),
     children: [

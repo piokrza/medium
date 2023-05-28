@@ -12,4 +12,8 @@ export class ArticleService {
   public getArticle$(slug: string): Observable<Article> {
     return this.http.get<{ article: Article }>(`${this.baseUrl}/articles/${slug}`).pipe(map(({ article }): Article => article));
   }
+
+  public deleteArticle$(slug: string): Observable<{}> {
+    return this.http.delete(`${this.baseUrl}/articles/${slug}`);
+  }
 }

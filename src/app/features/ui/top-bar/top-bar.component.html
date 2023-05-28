@@ -51,7 +51,7 @@
           <li><a [routerLink]="['/settings']" class="toolbar__desktop-link">Settings</a></li>
           <li mat-ripple>
             <a [routerLink]="['/']" class="toolbar__desktop-link">
-              <img [src]="currentUser.image" alt="profile picture" />
+              <img *ngIf="currentUser.image" [src]="currentUser.image" alt="profile picture" />
               <span>
                 {{ currentUser.username }}
               </span>
