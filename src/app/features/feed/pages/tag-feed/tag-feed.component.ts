@@ -11,7 +11,7 @@ const TagFeedImports: Array<any> = [CommonModule, FeedContainerComponent];
   selector: 'app-tag-feed',
   standalone: true,
   imports: TagFeedImports,
-  template: `<app-feed-container [apiUrl]="apiUrl" />`,
+  template: `<app-feed-container [apiUrl]="apiUrl" [tagName]="tagName" />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class TagFeedComponent extends DestroyComponent implements OnInit {

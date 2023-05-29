@@ -4,7 +4,7 @@
       <a [routerLink]="['/feed']">Your feed</a>
     </li>
 
-    <li class="toggler__item" routerLinkActive="toggler__item--active" [routerLinkActiveOptions]="{ exact: true }">
+    <li [routerLinkActiveOptions]="{ exact: true }" class="toggler__item" routerLinkActive="toggler__item--active">
       <a [routerLink]="['/']" queryParamsHandling="merge">Global feed</a>
     </li>
 

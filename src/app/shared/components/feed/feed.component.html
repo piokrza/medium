@@ -38,7 +38,9 @@
         </a>
       </mat-card>
 
-      <app-paginator [total]="feed.articlesCount" [limit]="limit" [url]="baseUrl" [currentPage]="currentPage" />
+      <div class="center my-1">
+        <app-paginator [total]="feed.articlesCount" [limit]="limit" [url]="baseUrl" [currentPage]="currentPage" />
+      </div>
     </div>
   </ng-template>
 </section>

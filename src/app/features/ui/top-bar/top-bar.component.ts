@@ -31,7 +31,5 @@ const TopBarImports: Array<any> = [
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopBarComponent {
-  private readonly store: Store = inject(Store);
-
-  public readonly currentUser$: Observable<CurrentUser | null | undefined> = this.store.select(AuthSelectors.currentUser);
+  public readonly currentUser$: Observable<CurrentUser | null | undefined> = inject(Store).select(AuthSelectors.currentUser);
 }

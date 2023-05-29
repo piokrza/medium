@@ -5,16 +5,23 @@ import { Route } from '@core/enums/route.enum';
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('@global-feed/global-feed.component'),
+    loadComponent: () => import('@feed/feed.component'),
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('@feed/pages/your-feed/your-feed.component'),
+      },
+      {
+        path: Route.Feed,
+        loadComponent: () => import('@feed/pages/your-feed/your-feed.component'),
+      },
+      {
+        path: `${Route.Tags}${RouteFragment.Slug}`,
+        loadComponent: () => import('@feed/pages/tag-feed/tag-feed.component'),
+      },
+    ],
   },
-  {
-    path: Route.Feed,
-    loadComponent: () => import('@your-feed/your-feed.component'),
-  },
-  {
-    path: `${Route.Tags}${RouteFragment.Slug}`,
-    loadComponent: () => import('@tag-feed/tag-feed.component'),
-  },
+
   {
     path: `${Route.Articles}${RouteFragment.Slug}`,
     loadComponent: () => import('@article/article.component'),

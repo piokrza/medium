@@ -22,9 +22,7 @@
     "lib": ["ES2022", "dom"],
     "paths": {
       "@auth/*": ["src/app/features/auth/*"],
-      "@global-feed/*": ["src/app/features/global-feed/*"],
-      "@your-feed/*": ["src/app/features/your-feed/*"],
-      "@tag-feed/*": ["src/app/features/tag-feed/*"],
+      "@feed/*": ["src/app/features/feed/*"],
       "@article/*": ["src/app/features/article/*"],
       "@ui/*": ["src/app/features/ui/*"],
       "@store/*": ["src/app/store/*"],

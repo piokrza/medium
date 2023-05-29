@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { GetFeedResponse } from '@core/models/get-feed-response.model';
-import { FeedService } from '@global-feed/services/feed.service';
+import { FeedService } from '@feed/services/feed.service';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { FeedActions } from '@store/feed';
 import { catchError, exhaustMap, map, of } from 'rxjs';
