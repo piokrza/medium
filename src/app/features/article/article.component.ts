@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CurrentUser } from '@auth/models/current-user.model';
@@ -10,7 +11,7 @@ import { ArticleActions, ArticleSelectors } from '@store/article';
 import { AuthSelectors } from '@store/auth';
 import { Observable, combineLatestWith, filter, map } from 'rxjs';
 
-const ArticleImports: Array<any> = [CommonModule, RouterLink, MatProgressSpinnerModule, TagListComponent];
+const ArticleImports: Array<any> = [CommonModule, RouterLink, MatProgressSpinnerModule, TagListComponent, MatDialogModule];
 
 @Component({
   selector: 'app-article',
@@ -22,6 +23,7 @@ const ArticleImports: Array<any> = [CommonModule, RouterLink, MatProgressSpinner
 })
 export default class ArticleComponent implements OnInit {
   private readonly store: Store = inject(Store);
+  private readonly dialog: MatDialog = inject(MatDialog);
 
   public readonly isAuthor$: Observable<boolean> = this.checkIfCurrentUserIsAuthor$();
   public readonly error$: Observable<string | null> = this.store.select(ArticleSelectors.error);
@@ -34,8 +36,14 @@ export default class ArticleComponent implements OnInit {
     this.store.dispatch(ArticleActions.getArticle({ slug: this.slug }));
   }
 
-  public deleteArticle(): void {
+  public onDeleteArticle(): void {
     this.store.dispatch(ArticleActions.deleteArticle({ slug: this.slug }));
+  }
+
+  public onEditArticle(): void {
+    // this.dialog.open(ArticleFormComponent, {
+    //   width: '250px',
+    // });
   }
 
   private checkIfCurrentUserIsAuthor$(): Observable<boolean> {

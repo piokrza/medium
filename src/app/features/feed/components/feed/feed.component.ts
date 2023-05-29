@@ -1,15 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { DestroyComponent } from '@core/abstracts/destroy/destroy.component';
 import { GetFeedResponse } from '@core/models/get-feed-response.model';
+import { FeedCardComponent } from '@feed/components/feed-card/feed-card.component';
 import { Store } from '@ngrx/store';
 import { ErrorMessageComponent } from '@shared/components/error-message/error-message.component';
 import { PaginatorComponent } from '@shared/components/paginator/paginator.component';
-import { TagListComponent } from '@shared/components/tag-list/tag-list.component';
 import { FeedActions, FeedSelectors } from '@store/feed';
 import queryString from 'query-string';
 import { Observable, takeUntil } from 'rxjs';
@@ -17,13 +16,11 @@ import { environment } from 'src/environments/environment.development';
 
 const FeedImports: Array<any> = [
   CommonModule,
-  RouterLink,
-  MatCardModule,
   MatListModule,
   MatProgressSpinnerModule,
   ErrorMessageComponent,
   PaginatorComponent,
-  TagListComponent,
+  FeedCardComponent,
 ];
 
 @Component({

@@ -4,8 +4,22 @@ import { Route } from '@core/enums/route.enum';
 
 export const routes: Routes = [
   {
+    path: Route.Authentication,
+    loadComponent: () => import('@auth/auth.component'),
+    children: [
+      {
+        path: RouteFragment.Register,
+        loadComponent: () => import('@auth/pages/register/register.component'),
+      },
+      {
+        path: RouteFragment.Login,
+        loadComponent: () => import('@auth/pages/login/login.component'),
+      },
+    ],
+  },
+  {
     path: '',
-    loadComponent: () => import('@feed/feed.component'),
+    loadComponent: () => import('@feed/feed-view.component'),
     children: [
       {
         path: '',
@@ -21,23 +35,12 @@ export const routes: Routes = [
       },
     ],
   },
-
+  {
+    path: `${Route.Articles}${RouteFragment.New}`,
+    loadComponent: () => import('@article/components/article-form/article-form.component'),
+  },
   {
     path: `${Route.Articles}${RouteFragment.Slug}`,
     loadComponent: () => import('@article/article.component'),
-  },
-  {
-    path: Route.Authentication,
-    loadComponent: () => import('@auth/auth.component'),
-    children: [
-      {
-        path: RouteFragment.Register,
-        loadComponent: () => import('@auth/pages/register/register.component'),
-      },
-      {
-        path: RouteFragment.Login,
-        loadComponent: () => import('@auth/pages/login/login.component'),
-      },
-    ],
   },
 ];

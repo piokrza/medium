@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FeedContainerComponent } from '@ui/feed-container/feed-container.component';
+import { FeedContainerComponent } from '@feed/components/feed-container/feed-container.component';
 
 const GlobalFeedImports: Array<any> = [CommonModule, FeedContainerComponent];
 

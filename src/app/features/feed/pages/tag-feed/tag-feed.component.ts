@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { DestroyComponent } from '@core/abstracts/destroy/destroy.component';
-import { FeedContainerComponent } from '@ui/feed-container/feed-container.component';
+import { FeedContainerComponent } from '@feed/components/feed-container/feed-container.component';
 import { takeUntil } from 'rxjs';
 
 const TagFeedImports: Array<any> = [CommonModule, FeedContainerComponent];

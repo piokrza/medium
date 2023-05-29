@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { FeedComponent } from '@shared/components/feed/feed.component';
-import { FeedTogglerComponent } from '@shared/components/feed-toggler/feed-toggler.component';
+import { FeedComponent } from '@feed/components/feed/feed.component';
+import { FeedTogglerComponent } from '@feed/components/feed-toggler/feed-toggler.component';
 import { PopularTagsComponent } from '@shared/components/popular-tags/popular-tags.component';
 import { BannerComponent } from '@ui/banner/banner.component';
 
