@@ -1,4 +1,5 @@
 import { Article } from '@core/models/article.model';
+import { BackendErrors } from '@core/models/backend-errors.model';
 import { routerNavigatedAction } from '@ngrx/router-store';
 import { createReducer, on } from '@ngrx/store';
 import { ArticleActions } from '@store/article';
@@ -9,12 +10,16 @@ export interface State {
   isLoading: boolean;
   error: string | null;
   article: Article | null;
+  createArticleErrors: BackendErrors | null;
+  isCreateArticleSubmitting: boolean;
 }
 
 const initialState: State = {
   isLoading: false,
   error: null,
   article: null,
+  createArticleErrors: null,
+  isCreateArticleSubmitting: false,
 };
 
 export const reducer = createReducer(
@@ -28,6 +33,16 @@ export const reducer = createReducer(
   }),
   on(ArticleActions.getArticleFailure, (state): State => {
     return { ...state, isLoading: false };
+  }),
+
+  on(ArticleActions.createArticle, (state): State => {
+    return { ...state, isCreateArticleSubmitting: true };
+  }),
+  on(ArticleActions.createArticleSuccess, (state): State => {
+    return { ...state, isCreateArticleSubmitting: false };
+  }),
+  on(ArticleActions.createArticleFailure, (state, { errors }): State => {
+    return { ...state, isCreateArticleSubmitting: false, createArticleErrors: errors };
   }),
 
   on(routerNavigatedAction, () => initialState)

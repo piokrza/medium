@@ -1,11 +1,10 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-const AuthImports: Array<any> = [CommonModule, RouterOutlet];
+const AuthImports: Array<any> = [RouterOutlet];
 
 @Component({
-  selector: 'app-auth',
+  selector: 'app-auth-view',
   standalone: true,
   imports: AuthImports,
   template: `
@@ -14,4 +13,4 @@ const AuthImports: Array<any> = [CommonModule, RouterOutlet];
     </section>
   `,
 })
-export default class AuthComponent {}
+export default class AuthViewComponent {}

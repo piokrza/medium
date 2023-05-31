@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-const FeedContainerImports: Array<any> = [RouterOutlet];
+const ArticleContainerImports: Array<any> = [RouterOutlet];
 
 @Component({
-  selector: 'app-feed-view',
+  selector: 'app-article-view',
   standalone: true,
-  imports: FeedContainerImports,
+  imports: ArticleContainerImports,
   template: `
     <section>
       <router-outlet />
@@ -14,4 +14,4 @@ const FeedContainerImports: Array<any> = [RouterOutlet];
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class FeedViewComponent {}
+export default class ArticleViewComponent {}

@@ -1,7 +1,14 @@
 <section>
-  <h1 class="text-center">Create article</h1>
+  <h1 class="text-center">{{ mode | titlecase }} article</h1>
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ng-container *ngIf="errors">
+      <pre>
+ 
+        {{ errors | json }}
+      </pre>
+    </ng-container>
+
     <mat-form-field class="w-full" appearance="fill">
       <mat-label>Title</mat-label>
       <input matInput formControlName="title" />
@@ -34,7 +41,7 @@
     </mat-form-field>
 
     <div>
-      <button type="submit" class="w-full" mat-button>Create article</button>
+      <button [disabled]="isSubmitting" type="submit" class="w-full" mat-button>{{ mode | titlecase }} article</button>
     </div>
   </form>
 </section>
