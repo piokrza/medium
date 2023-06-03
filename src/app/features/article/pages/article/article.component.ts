@@ -9,8 +9,11 @@ import { ArticleFormMode } from '@article/enums/article-form-mode.enum';
 import { ArticleFormData } from '@article/models/article-form-data.model';
 import { ArticlePayload } from '@article/models/article-payload.model';
 import { CurrentUser } from '@auth/models/current-user.model';
+import { BaseDialogConfig } from '@core/constants/base-dialog.config';
 import { Article } from '@core/models/article.model';
+import { ConfirmationDialogData } from '@core/models/confirmation-dialog-data.model';
 import { Store } from '@ngrx/store';
+import { ConfirmationDialogComponent } from '@shared/components/confirmation-dialog/confirmation-dialog.component';
 import { TagListComponent } from '@shared/components/tag-list/tag-list.component';
 import { ArticleActions, ArticleSelectors } from '@store/article';
 import { AuthSelectors } from '@store/auth';
@@ -42,16 +45,30 @@ export default class ArticleComponent implements OnInit {
   }
 
   public onDeleteArticle(): void {
-    this.store.dispatch(ArticleActions.deleteArticle({ slug: this.slug }));
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      ...BaseDialogConfig,
+      data: { label: 'Are you sure that you want to delete this article?' } as ConfirmationDialogData,
+    });
+
+    dialogRef.afterClosed().subscribe({
+      next: (isConfirmed: boolean): void => {
+        isConfirmed && this.store.dispatch(ArticleActions.deleteArticle({ slug: this.slug }));
+      },
+    });
   }
 
   public onEditArticle({ title, description, tagList, body }: Article): void {
     const formValues: ArticlePayload = { title, description, body, tagList };
 
-    this.dialog.open(ArticleFormComponent, {
-      width: '90%',
-      maxWidth: '400px',
+    const dialogRef = this.dialog.open(ArticleFormComponent, {
+      ...BaseDialogConfig,
       data: { mode: ArticleFormMode.UPDATE, formValues } as ArticleFormData,
+    });
+
+    dialogRef.afterClosed().subscribe({
+      next: (articlePayload: ArticlePayload): void => {
+        articlePayload && this.store.dispatch(ArticleActions.updateArticle({ slug: this.slug, articlePayload }));
+      },
     });
   }
 

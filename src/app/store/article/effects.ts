@@ -91,3 +91,24 @@ export const redirectAfterCreateArticle = createEffect(
   },
   { functional: true, dispatch: false }
 );
+
+export const updateArticle = createEffect(
+  (actions$ = inject(Actions), articleService = inject(ArticleService)) => {
+    return actions$.pipe(
+      ofType(ArticleActions.updateArticle),
+      exhaustMap(({ articlePayload, slug }) => {
+        return articleService.updateArticle$(slug, articlePayload).pipe(
+          map((article: Article) => {
+            return ArticleActions.updateArticleSuccess({ article });
+          }),
+          catchError((err: HttpErrorResponse) => {
+            const errors = err.error.errors as BackendErrors;
+
+            return of(ArticleActions.updateArticleFailure({ errors }));
+          })
+        );
+      })
+    );
+  },
+  { functional: true }
+);

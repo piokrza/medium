@@ -14,3 +14,7 @@ export const deleteArticleFailure = createAction('[Article] Delete article failu
 export const createArticle = createAction('[Article] Create article', props<{ articlePayload: ArticlePayload }>());
 export const createArticleSuccess = createAction('[Article] Create article success', props<{ article: Article }>());
 export const createArticleFailure = createAction('[Article] Create article failure', props<{ errors: BackendErrors }>());
+
+export const updateArticle = createAction('[Article] Update article', props<{ articlePayload: ArticlePayload; slug: string }>());
+export const updateArticleSuccess = createAction('[Article] Update article success', props<{ article: Article }>());
+export const updateArticleFailure = createAction('[Article] Update article failure', props<{ errors: BackendErrors }>());

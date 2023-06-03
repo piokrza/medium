@@ -45,5 +45,16 @@ export const reducer = createReducer(
     return { ...state, isCreateArticleSubmitting: false, createArticleErrors: errors };
   }),
 
+  // TODO: refactor article state and update action
+  on(ArticleActions.updateArticle, (state): State => {
+    return { ...state, isCreateArticleSubmitting: true };
+  }),
+  on(ArticleActions.updateArticleSuccess, (state, { article }): State => {
+    return { ...state, isCreateArticleSubmitting: false, article };
+  }),
+  on(ArticleActions.updateArticleFailure, (state, { errors }): State => {
+    return { ...state, isCreateArticleSubmitting: false, createArticleErrors: errors };
+  }),
+
   on(routerNavigatedAction, () => initialState)
 );

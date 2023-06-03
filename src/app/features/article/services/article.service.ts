@@ -24,4 +24,10 @@ export class ArticleService {
       .post<ArticleRequest>(`${this.baseUrl}/articles`, { article: articlePayload })
       .pipe(map(({ article }): Article => article));
   }
+
+  public updateArticle$(slug: string, articlePayload: ArticlePayload): Observable<Article> {
+    return this.http
+      .put<ArticleRequest>(`${this.baseUrl}/articles/${slug}`, { article: articlePayload })
+      .pipe(map(({ article }): Article => article));
+  }
 }

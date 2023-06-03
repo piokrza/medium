@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-banner',
@@ -12,6 +12,5 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
   `,
   styleUrls: ['./banner.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BannerComponent {}

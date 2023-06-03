@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Inject, Input, OnInit, Output, inject } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -43,7 +43,7 @@ export default class ArticleFormComponent implements OnInit {
 
   public form: FormGroup<ArticleForm> = inject(ArticleFormService).getArticleForm();
 
-  constructor(@Inject(MAT_DIALOG_DATA) public formData: ArticleFormData) {
+  constructor(@Inject(MAT_DIALOG_DATA) public formData: ArticleFormData, public readonly dialogRef: MatDialogRef<ArticleFormComponent>) {
     if (this.formData) this.mode = this.formData.mode;
   }
 
@@ -59,7 +59,8 @@ export default class ArticleFormComponent implements OnInit {
 
     const articleFormValues: ArticlePayload = { ...this.form.getRawValue(), tagList: this.form.value.tagList!.split(' ') };
 
-    this.formSubmit.emit(articleFormValues);
+    this.mode === ArticleFormMode.CREATE && this.formSubmit.emit(articleFormValues);
+    this.mode === ArticleFormMode.UPDATE && this.dialogRef.close(articleFormValues);
   }
 
   private patchFormValues(): void {
