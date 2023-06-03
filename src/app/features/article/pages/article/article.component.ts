@@ -1,8 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import ArticleFormComponent from '@article/components/article-form/article-form.component';
+import { ArticleFormMode } from '@article/enums/article-form-mode.enum';
+import { ArticleFormData } from '@article/models/article-form-data.model';
+import { ArticlePayload } from '@article/models/article-payload.model';
 import { CurrentUser } from '@auth/models/current-user.model';
 import { Article } from '@core/models/article.model';
 import { Store } from '@ngrx/store';
@@ -11,7 +16,7 @@ import { ArticleActions, ArticleSelectors } from '@store/article';
 import { AuthSelectors } from '@store/auth';
 import { Observable, combineLatestWith, filter, map } from 'rxjs';
 
-const ArticleImports: Array<any> = [CommonModule, RouterLink, MatProgressSpinnerModule, TagListComponent, MatDialogModule];
+const ArticleImports: Array<any> = [CommonModule, RouterLink, MatProgressSpinnerModule, TagListComponent, MatDialogModule, MatButtonModule];
 
 @Component({
   selector: 'app-article',
@@ -40,10 +45,14 @@ export default class ArticleComponent implements OnInit {
     this.store.dispatch(ArticleActions.deleteArticle({ slug: this.slug }));
   }
 
-  public onEditArticle(): void {
-    // this.dialog.open(ArticleFormComponent, {
-    //   width: '250px',
-    // });
+  public onEditArticle({ title, description, tagList, body }: Article): void {
+    const formValues: ArticlePayload = { title, description, body, tagList };
+
+    this.dialog.open(ArticleFormComponent, {
+      width: '90%',
+      maxWidth: '400px',
+      data: { mode: ArticleFormMode.UPDATE, formValues } as ArticleFormData,
+    });
   }
 
   private checkIfCurrentUserIsAuthor$(): Observable<boolean> {

@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { ArticleFormComponent } from './article-form.component';
+import ArticleFormComponent from '@article/components/article-form/article-form.component';
 
 describe('ArticleFormComponent', () => {
   let component: ArticleFormComponent;
@@ -8,7 +7,7 @@ describe('ArticleFormComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ArticleFormComponent]
+      imports: [ArticleFormComponent],
     });
     fixture = TestBed.createComponent(ArticleFormComponent);
     component = fixture.componentInstance;

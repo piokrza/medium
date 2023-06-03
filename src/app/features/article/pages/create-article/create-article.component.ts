@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import ArticleFormComponent from '@article/components/article-form/article-form.component';
 import { ArticleFormMode } from '@article/enums/article-form-mode.enum';
 import { ArticlePayload } from '@article/models/article-payload.model';
@@ -7,12 +8,14 @@ import { Store } from '@ngrx/store';
 import { ArticleActions, ArticleSelectors } from '@store/article';
 import { Observable } from 'rxjs';
 
-const CreateArticle: Array<any> = [ArticleFormComponent];
+const CreateArticleImports: Array<any> = [ArticleFormComponent];
+const CreateArticleProviders: Array<any> = [{ provide: MAT_DIALOG_DATA, useValue: {} }];
 
 @Component({
   selector: 'app-create-article',
   standalone: true,
-  imports: CreateArticle,
+  imports: CreateArticleImports,
+  providers: CreateArticleProviders,
   template: ` <app-article-form (formSubmit)="onFormSubmit($event)" [mode]="articleFormMode.CREATE" /> `,
   styleUrls: ['./create-article.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

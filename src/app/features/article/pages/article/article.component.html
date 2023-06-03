@@ -20,8 +20,8 @@
     </div>
 
     <div *ngIf="isAuthor$ | async" class="article__buttons">
-      <button (click)="onEditArticle()" mat-button>Edit article</button>
-      <button (click)="onDeleteArticle()" mat-button>Delete article</button>
+      <button (click)="onEditArticle(article)" color="primary" mat-stroked-button>Edit article</button>
+      <button (click)="onDeleteArticle()" color="warn" mat-button>Delete article</button>
     </div>
 
     <div *ngIf="article" class="article__body">

@@ -71,7 +71,6 @@ export const createArticle = createEffect(
           catchError((err: HttpErrorResponse) => {
             const errors = err.error.errors as BackendErrors;
 
-            console.log(errors);
             return of(ArticleActions.createArticleFailure({ errors }));
           })
         );
