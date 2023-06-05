@@ -8,7 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { CurrentUser } from '@auth/models/current-user.model';
 import { Store } from '@ngrx/store';
-import { AuthSelectors } from '@store/auth';
+import { AuthActions, AuthSelectors } from '@store/auth';
 import { Observable } from 'rxjs';
 
 const TopBarImports: Array<any> = [
@@ -31,5 +31,11 @@ const TopBarImports: Array<any> = [
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopBarComponent {
+  private readonly store: Store = inject(Store);
+
   public readonly currentUser$: Observable<CurrentUser | null | undefined> = inject(Store).select(AuthSelectors.currentUser);
+
+  public logout(): void {
+    this.store.dispatch(AuthActions.logout());
+  }
 }

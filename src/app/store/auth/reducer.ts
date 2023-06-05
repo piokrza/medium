@@ -67,5 +67,10 @@ export const reducer = createReducer(
   }),
   on(AuthActions.updateCurrentUserFailure, (state, { errors }): State => {
     return { ...state, errors };
+  }),
+
+  // on logout
+  on(AuthActions.logout, (state): State => {
+    return { ...state, ...initialState, currentUser: null };
   })
 );

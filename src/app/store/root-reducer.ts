@@ -5,6 +5,7 @@ import * as fromArticle from '@store/article';
 import * as fromAuth from '@store/auth';
 import * as fromFeed from '@store/feed';
 import * as fromPopularTags from '@store/popular-tags';
+import * as fromSettings from '@store/settings';
 
 export interface AppState {
   router: RouterState;
@@ -12,6 +13,7 @@ export interface AppState {
   [fromFeed.FeatureKey]: fromFeed.State;
   [fromPopularTags.FeatureKey]: fromPopularTags.State;
   [fromArticle.FeatureKey]: fromArticle.State;
+  [fromSettings.FeatureKey]: fromSettings.State;
 }
 
 export const ROOT_REDUCER_TOKEN = 'Root reducers';
@@ -23,5 +25,6 @@ export const ROOT_REDUCER = new InjectionToken<ActionReducerMap<AppState>>(ROOT_
     [fromFeed.FeatureKey]: fromFeed.reducer,
     [fromPopularTags.FeatureKey]: fromPopularTags.reducer,
     [fromArticle.FeatureKey]: fromArticle.reducer,
+    [fromSettings.FeatureKey]: fromSettings.reducer,
   }),
 });

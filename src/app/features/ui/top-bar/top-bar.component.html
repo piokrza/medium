@@ -25,6 +25,9 @@
             {{ currentUser.username }}
           </span>
         </button>
+        <button (click)="logout()" mat-menu-item>
+          <span>Logout</span>
+        </button>
       </ng-container>
 
       <ng-template #authLinks>
@@ -56,6 +59,9 @@
                 {{ currentUser.username }}
               </span>
             </a>
+          </li>
+          <li>
+            <button (click)="logout()" mat-button>Logout</button>
           </li>
         </ng-container>
       </ul>

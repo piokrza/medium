@@ -120,3 +120,16 @@ export const updateCurrentUser = createEffect(
   },
   { functional: true }
 );
+
+export const logout = createEffect(
+  (actions$ = inject(Actions), router = inject(Router), persistanceService = inject(PersistanceService)) => {
+    return actions$.pipe(
+      ofType(AuthActions.logout),
+      tap((): void => {
+        persistanceService.set(AccessToken, '');
+        router.navigateByUrl('/');
+      })
+    );
+  },
+  { functional: true, dispatch: false }
+);

@@ -52,5 +52,11 @@ export const routes: Routes = [
   {
     path: Route.SETTINGS,
     loadComponent: () => import('@settings/settings-view.component'),
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('@settings/pages/settings/settings.component'),
+      },
+    ],
   },
 ];
