@@ -85,7 +85,7 @@ export const redirectAfterCreateArticle = createEffect(
     return actions$.pipe(
       ofType(ArticleActions.createArticleSuccess),
       tap(({ article }) => {
-        router.navigate([Route.Articles, article.slug]);
+        router.navigate([Route.ARTICLES, article.slug]);
       })
     );
   },

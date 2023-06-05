@@ -1,6 +1,7 @@
 export enum Route {
-  Authentication = 'authentication',
-  Feed = 'feed',
-  Tags = 'tags',
-  Articles = 'articles',
+  AUTHENTICATION = 'authentication',
+  FEED = 'feed',
+  TAGS = 'tags',
+  ARTICLES = 'articles',
+  SETTINGS = 'settings',
 }

@@ -1,3 +1,4 @@
+import { CurrentUserRequest } from '@auth/models/current-user-request.model';
 import { CurrentUser } from '@auth/models/current-user.model';
 import { LoginRequest } from '@auth/models/login-request.model';
 import { RegisterRequest } from '@auth/models/register-request.model';
@@ -15,3 +16,7 @@ export const loginFailure = createAction('[Auth] Login Failure', props<{ errors:
 export const getCurrentUser = createAction('[Auth] Get current user');
 export const getCurrentUserSuccess = createAction('[Auth] Get current user Success', props<{ currentUser: CurrentUser }>());
 export const getCurrentUserFailure = createAction('[Auth] Get current user Failure');
+
+export const updateCurrentUser = createAction('[Auth] Update current user', props<{ currentUserRequest: CurrentUserRequest }>());
+export const updateCurrentUserSuccess = createAction('[Auth] Update current user Success', props<{ currentUser: CurrentUser }>());
+export const updateCurrentUserFailure = createAction('[Auth] Update current user Failure', props<{ errors: BackendErrors }>());

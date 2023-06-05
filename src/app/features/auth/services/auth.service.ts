@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { AuthResponse } from '@auth/models/auth-response.model';
+import { CurrentUserRequest } from '@auth/models/current-user-request.model';
 import { CurrentUser } from '@auth/models/current-user.model';
 import { LoginRequest } from '@auth/models/login-request.model';
 import { RegisterRequest } from '@auth/models/register-request.model';
@@ -23,5 +24,9 @@ export class AuthService {
 
   public getCurrentUser$(): Observable<CurrentUser> {
     return this.http.get<AuthResponse>(`${this.baseUrl}/user`).pipe(map(getUser));
+  }
+
+  public updateCurrentUser$(currentUserRequest: CurrentUserRequest): Observable<CurrentUser> {
+    return this.http.put<AuthResponse>(`${this.baseUrl}/user`, currentUserRequest).pipe(map(getUser));
   }
 }

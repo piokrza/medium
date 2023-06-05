@@ -59,5 +59,13 @@ export const reducer = createReducer(
   }),
   on(AuthActions.getCurrentUserFailure, (state): State => {
     return { ...state, isLoading: false, currentUser: null };
+  }),
+
+  // update current user
+  on(AuthActions.updateCurrentUserSuccess, (state, { currentUser }): State => {
+    return { ...state, currentUser };
+  }),
+  on(AuthActions.updateCurrentUserFailure, (state, { errors }): State => {
+    return { ...state, errors };
   })
 );

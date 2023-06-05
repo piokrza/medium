@@ -100,3 +100,23 @@ export const getCurrentUser = createEffect(
   },
   { functional: true }
 );
+
+export const updateCurrentUser = createEffect(
+  (actions$ = inject(Actions), authService = inject(AuthService)) => {
+    return actions$.pipe(
+      ofType(AuthActions.updateCurrentUser),
+      exhaustMap(({ currentUserRequest }) => {
+        return authService.updateCurrentUser$(currentUserRequest).pipe(
+          map((currentUser: CurrentUser) => {
+            return AuthActions.updateCurrentUserSuccess({ currentUser });
+          }),
+          catchError((err: HttpErrorResponse) => {
+            const errors = err.error.errors as BackendErrors;
+            return of(AuthActions.updateCurrentUserFailure({ errors }));
+          })
+        );
+      })
+    );
+  },
+  { functional: true }
+);

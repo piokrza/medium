@@ -1,6 +1,6 @@
 export enum RouteFragment {
-  Register = 'register',
-  Login = 'login',
-  Slug = ':slug',
-  New = 'new',
+  REGISTER = 'register',
+  LOGIN = 'login',
+  SLUG = ':slug',
+  NEW = 'new',
 }
