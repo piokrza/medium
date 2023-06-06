@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { RouteFragment } from '@core/enums/route-fragment.enum';
 import { Route } from '@core/enums/route.enum';
+import { authGuard } from '@core/guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -55,6 +56,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
+        canActivate: [authGuard],
         loadComponent: () => import('@settings/pages/settings/settings.component'),
       },
     ],
