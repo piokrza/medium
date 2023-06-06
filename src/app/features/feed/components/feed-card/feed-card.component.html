@@ -14,7 +14,8 @@
         </span>
       </div>
     </div>
-    <div>ADD TO FAVOURITES</div>
+
+    <app-add-to-favorites [isFavorited]="article.favourited" [articleSlug]="article.slug" [favoritesCount]="article.favouritesCount" />
   </div>
 
   <a [routerLink]="['/articles', article.slug]" class="article__content">

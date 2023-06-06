@@ -1,6 +1,5 @@
-import { DialogRef } from '@angular/cdk/dialog';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import ArticleFormComponent from '@article/components/article-form/article-form.component';
 import { ArticleFormMode } from '@article/enums/article-form-mode.enum';
 import { ArticlePayload } from '@article/models/article-payload.model';
@@ -11,8 +10,8 @@ import { Observable } from 'rxjs';
 
 const CreateArticleImports: Array<any> = [ArticleFormComponent, MatDialogModule];
 const CreateArticleProviders: Array<any> = [
-  { provide: DialogRef, useValue: {} },
   { provide: MAT_DIALOG_DATA, useValue: {} },
+  { provide: MatDialogRef, useValue: {} },
 ];
 
 @Component({
