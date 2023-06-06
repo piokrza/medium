@@ -19,8 +19,6 @@ export default class SettingsComponent {
   private readonly store: Store = inject(Store);
 
   public onSettingsFormSubmit(currentUserRequest: CurrentUserRequest): void {
-    console.log(currentUserRequest);
-
     this.store.dispatch(AuthActions.updateCurrentUser({ currentUserRequest }));
   }
 }

@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { TagFeedComponent } from './tag-feed.component';
+import TagFeedComponent from '@feed/pages/tag-feed/tag-feed.component';
 
 describe('TagFeedComponent', () => {
   let component: TagFeedComponent;
@@ -8,7 +7,7 @@ describe('TagFeedComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TagFeedComponent]
+      imports: [TagFeedComponent],
     });
     fixture = TestBed.createComponent(TagFeedComponent);
     component = fixture.componentInstance;

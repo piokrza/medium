@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { YourFeedComponent } from './your-feed.component';
+import YourFeedComponent from '@feed/pages/your-feed/your-feed.component';
 
 describe('YourFeedComponent', () => {
   let component: YourFeedComponent;
@@ -8,7 +7,7 @@ describe('YourFeedComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [YourFeedComponent]
+      imports: [YourFeedComponent],
     });
     fixture = TestBed.createComponent(YourFeedComponent);
     component = fixture.componentInstance;
