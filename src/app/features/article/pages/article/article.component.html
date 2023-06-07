@@ -10,18 +10,18 @@
 
     <div>
       <a [routerLink]="['/profiles', article.author.username]">
-        <img *ngIf="article.author.image" [src]="article.author.image" />
+        <img *ngIf="article.author.image" [src]="article.author.image" class="article__user-image" />
       </a>
     </div>
 
     <div>
-      <a [routerLink]="['/articles', article.slug]">{{ article.author.username }}</a>
+      <a [routerLink]="['/articles', article.slug]" class="article__date">{{ article.author.username }}</a>
       <span>{{ article.createdAt | date }}</span>
     </div>
 
     <div *ngIf="isAuthor$ | async" class="article__buttons">
       <button (click)="onEditArticle(article)" color="primary" mat-stroked-button>Edit article</button>
-      <button (click)="onDeleteArticle()" color="warn" mat-button>Delete article</button>
+      <button (click)="onDeleteArticle()" color="warn" mat-stroked-button>Delete article</button>
     </div>
 
     <div *ngIf="article" class="article__body">

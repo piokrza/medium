@@ -4,10 +4,22 @@
   }
 
   &__buttons {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
     margin-top: 1.5rem;
   }
 
   &__body {
-    margin-top: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  &__user-image {
+    border-radius: 0.5rem;
+    max-width: 45px;
+  }
+
+  &__date {
+    display: block;
   }
 }

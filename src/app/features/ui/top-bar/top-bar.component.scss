@@ -1,4 +1,4 @@
-@use '../../../../assets/styles/variables/colors.scss' as color;
+@use '../../../../assets/styles/variables/colors' as color;
 
 .toolbar {
   width: 100%;
@@ -8,6 +8,7 @@
 
   &__desktop-list {
     display: flex;
+    align-items: center;
     gap: 0.75rem;
     list-style: none;
   }
@@ -19,6 +20,7 @@
     border-radius: 0.25rem;
     border: 1px solid color.$gray;
     transition: 250ms;
+    font-size: 1rem;
 
     &--active,
     &:hover {
@@ -33,7 +35,7 @@
     border-radius: 50%;
   }
 
-  &__mobile-user-wrapper {
+  &__items-center {
     display: flex;
     align-items: center;
   }

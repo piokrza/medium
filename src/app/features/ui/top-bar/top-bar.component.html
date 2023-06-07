@@ -9,41 +9,33 @@
     </div>
 
     <mat-menu #menu="matMenu">
-      <button [routerLink]="['/']" mat-menu-item>
-        <span>Home</span>
-      </button>
+      <a [routerLink]="['/']" mat-menu-item>Home</a>
 
       <ng-container *ngIf="currentUser$ | async as currentUser; else mobileAuthLinks">
-        <button [routerLink]="['/articles/new']" mat-menu-item>
-          <span>New Post</span>
-        </button>
-
-        <button [routerLink]="['/settings']" mat-menu-item>
-          <span>Settings</span>
-        </button>
-
-        <button [routerLink]="['/profiles', currentUser.username]" mat-menu-item>
-          <div class="toolbar__mobile-user-wrapper">
+        <a [routerLink]="['/articles/new']" mat-menu-item>New Post</a>
+        <a [routerLink]="['/settings']" mat-menu-item>Settings</a>
+        <a [routerLink]="['/profiles', currentUser.username]" mat-menu-item>
+          <div class="toolbar__items-center">
             <img *ngIf="currentUser.image" [src]="currentUser.image" alt="profile picture" class="toolbar__user-image" />
             <span>
               {{ currentUser.username }}
             </span>
           </div>
-        </button>
+        </a>
 
-        <button (click)="onLogout()" mat-menu-item>
-          <span>Logout</span>
-        </button>
+        <div (click)="onLogout()" mat-menu-item>
+          <div class="toolbar__items-center">
+            <button mat-icon-button>
+              <mat-icon>power_settings_new</mat-icon>
+            </button>
+            <span>Logout</span>
+          </div>
+        </div>
       </ng-container>
 
       <ng-template #mobileAuthLinks>
-        <button [routerLink]="['/authentication/login']" mat-menu-item>
-          <span>Login</span>
-        </button>
-
-        <button [routerLink]="['/authentication/register']" mat-menu-item>
-          <span>Register</span>
-        </button>
+        <a [routerLink]="['/authentication/login']" mat-menu-item>Login</a>
+        <a [routerLink]="['/authentication/register']" mat-menu-item>Register</a>
       </ng-template>
     </mat-menu>
   </div>
@@ -76,7 +68,9 @@
           </li>
 
           <li>
-            <button (click)="onLogout()" mat-button>Logout</button>
+            <button (click)="onLogout()" mat-icon-button>
+              <mat-icon>power_settings_new</mat-icon>
+            </button>
           </li>
         </ng-container>
 
