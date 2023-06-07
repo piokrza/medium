@@ -7,6 +7,7 @@ import { provideEffects } from '@ngrx/effects';
 import { provideRouterStore } from '@ngrx/router-store';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import * as addToFavoritesEffects from '@store/add-to-favorites/effects';
 import * as articleEffects from '@store/article/effects';
 import * as authEffects from '@store/auth/effects';
 import * as feedEffects from '@store/feed/effects';
@@ -14,7 +15,7 @@ import * as popularTagsEffects from '@store/popular-tags/effects';
 import { ROOT_REDUCER } from '@store/root-reducer';
 import { routes } from 'src/app/app.routes';
 
-const StoreEffects: Array<any> = [authEffects, feedEffects, popularTagsEffects, articleEffects];
+const StoreEffects: Array<any> = [authEffects, feedEffects, popularTagsEffects, articleEffects, addToFavoritesEffects];
 const Interceptors: Array<any> = [authInterceptor];
 
 export const appConfig: ApplicationConfig = {
