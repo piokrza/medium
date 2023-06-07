@@ -13,7 +13,8 @@
   }
 
   &__desktop-link {
-    display: block;
+    display: flex;
+    align-items: center;
     padding: 0 2rem;
     border-radius: 0.25rem;
     border: 1px solid color.$gray;
@@ -23,5 +24,17 @@
     &:hover {
       background-color: lighten(color.$gray, 30%);
     }
+  }
+
+  &__user-image {
+    width: 25px;
+    height: 25px;
+    margin-right: 0.75rem;
+    border-radius: 50%;
+  }
+
+  &__mobile-user-wrapper {
+    display: flex;
+    align-items: center;
   }
 }

@@ -4,6 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { RouterLink } from '@angular/router';
 import { ErrorMessagesComponent } from '@auth/components/error-messages/error-messages.component';
 import { AuthFormMode } from '@auth/enums/auth-form-mode.enum';
 import { AuthFormPayload } from '@auth/models/auth-form-payload.model';
@@ -18,6 +19,7 @@ const AuthFormImports: Array<any> = [
   MatInputModule,
   MatButtonModule,
   ErrorMessagesComponent,
+  RouterLink,
 ];
 const AuthFormProviders: Array<any> = [AuthFormService];
 

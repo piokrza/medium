@@ -1,4 +1,12 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="container-max-w-sm">
+  <h1 class="title">{{ mode | titlecase }}</h1>
+
+  <a
+    [routerLink]="['../', mode === AuthFormMode.REGISTER ? AuthFormMode.LOGIN : AuthFormMode.REGISTER]"
+    class="text-center redirection-link">
+    {{ mode === AuthFormMode.REGISTER ? 'Have ' : 'Need ' }} an account?
+  </a>
+
   <ng-container *ngIf="errorMessages.length">
     <app-error-messages [errorMessages]="errorMessages" />
   </ng-container>
@@ -25,6 +33,6 @@
   </mat-form-field>
 
   <button [disabled]="isSubmitting" type="submit" mat-button color="primary">
-    {{ mode === AuthFormMode.REGISTER ? 'Register' : 'Login' }}
+    {{ mode | titlecase }}
   </button>
 </form>

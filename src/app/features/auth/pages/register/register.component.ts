@@ -20,8 +20,14 @@ const RegisterProviders: Array<any> = [AuthFormService];
   standalone: true,
   imports: RegisterImports,
   providers: RegisterProviders,
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
+  template: `
+    <app-auth-form
+      [form]="registerForm"
+      [mode]="authFormMode.REGISTER"
+      [errors]="registerErrors$ | async"
+      [isSubmitting]="(isSubmitting$ | async)!"
+      (formSubmit)="onRegisterFormSubmit($event)" />
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class RegisterComponent {

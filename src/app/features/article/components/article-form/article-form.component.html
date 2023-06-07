@@ -1,11 +1,10 @@
 <section class="wrapper">
-  <h1 class="text-center">{{ mode | titlecase }} article</h1>
-
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h1 class="title">{{ mode | titlecase }} article</h1>
     <ng-container *ngIf="errors">
       <pre>
-       
-        {{ errors | json }}      
+
+        {{ errors | json }}
       </pre>
     </ng-container>
 

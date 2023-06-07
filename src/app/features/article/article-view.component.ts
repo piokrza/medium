@@ -8,7 +8,7 @@ const ArticleContainerImports: Array<any> = [RouterOutlet];
   standalone: true,
   imports: ArticleContainerImports,
   template: `
-    <section>
+    <section class="container-max-w-sm">
       <router-outlet />
     </section>
   `,

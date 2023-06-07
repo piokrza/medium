@@ -6,7 +6,7 @@
 
 <ng-template #loaded>
   <div *ngIf="article$ | async as article" class="article">
-    <h1 class="article__title">{{ article.title }}</h1>
+    <h1 class="title">{{ article.title }}</h1>
 
     <div>
       <a [routerLink]="['/profiles', article.author.username]">

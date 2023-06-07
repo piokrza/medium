@@ -12,25 +12,31 @@
       <button [routerLink]="['/']" mat-menu-item>
         <span>Home</span>
       </button>
-      <ng-container *ngIf="currentUser$ | async as currentUser; else authLinks">
+
+      <ng-container *ngIf="currentUser$ | async as currentUser; else mobileAuthLinks">
         <button [routerLink]="['/articles/new']" mat-menu-item>
           <span>New Post</span>
         </button>
+
         <button [routerLink]="['/settings']" mat-menu-item>
           <span>Settings</span>
         </button>
+
         <button [routerLink]="['/profiles', currentUser.username]" mat-menu-item>
-          <img *ngIf="currentUser.image" [src]="currentUser.image" alt="profile picture" />
-          <span>
-            {{ currentUser.username }}
-          </span>
+          <div class="toolbar__mobile-user-wrapper">
+            <img *ngIf="currentUser.image" [src]="currentUser.image" alt="profile picture" class="toolbar__user-image" />
+            <span>
+              {{ currentUser.username }}
+            </span>
+          </div>
         </button>
-        <button (click)="logout()" mat-menu-item>
+
+        <button (click)="onLogout()" mat-menu-item>
           <span>Logout</span>
         </button>
       </ng-container>
 
-      <ng-template #authLinks>
+      <ng-template #mobileAuthLinks>
         <button [routerLink]="['/authentication/login']" mat-menu-item>
           <span>Login</span>
         </button>
@@ -47,23 +53,36 @@
       <div class="toolbar__logo">Medium</div>
 
       <ul class="toolbar__desktop-list">
-        <li><a [routerLink]="['/']" class="toolbar__desktop-link">Home</a></li>
+        <li>
+          <a [routerLink]="['/']" class="toolbar__desktop-link">Home</a>
+        </li>
 
-        <ng-container *ngIf="currentUser$ | async as currentUser">
-          <li><a [routerLink]="['/articles/new']" class="toolbar__desktop-link">New Post</a></li>
-          <li><a [routerLink]="['/settings']" class="toolbar__desktop-link">Settings</a></li>
-          <li mat-ripple>
-            <a [routerLink]="['/']" class="toolbar__desktop-link">
-              <img *ngIf="currentUser.image" [src]="currentUser.image" alt="profile picture" />
+        <ng-container *ngIf="currentUser$ | async as currentUser; else authLinks">
+          <li>
+            <a [routerLink]="['/articles/new']" class="toolbar__desktop-link">New Post</a>
+          </li>
+
+          <li>
+            <a [routerLink]="['/settings']" class="toolbar__desktop-link">Settings</a>
+          </li>
+
+          <li [routerLink]="['/profiles', currentUser.username]" mat-ripple>
+            <a class="toolbar__desktop-link">
+              <img *ngIf="currentUser.image" [src]="currentUser.image" alt="profile picture" class="toolbar__user-image" />
               <span>
                 {{ currentUser.username }}
               </span>
             </a>
           </li>
+
           <li>
-            <button (click)="logout()" mat-button>Logout</button>
+            <button (click)="onLogout()" mat-button>Logout</button>
           </li>
         </ng-container>
+
+        <ng-template #authLinks>
+          <li><a [routerLink]="['/authentication/login']" class="toolbar__desktop-link">Login</a></li>
+        </ng-template>
       </ul>
     </div>
   </div>

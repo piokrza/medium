@@ -20,8 +20,14 @@ const LoginProviders: Array<any> = [AuthFormService];
   standalone: true,
   imports: LoginImports,
   providers: LoginProviders,
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  template: `
+    <app-auth-form
+      [form]="loginForm"
+      [mode]="authFormMode.LOGIN"
+      [errors]="loginErrors$ | async"
+      [isSubmitting]="(isSubmitting$ | async)!"
+      (formSubmit)="onFormSubmit($event)" />
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class LoginComponent {
