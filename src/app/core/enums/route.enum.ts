@@ -4,4 +4,5 @@ export enum Route {
   TAGS = 'tags',
   ARTICLES = 'articles',
   SETTINGS = 'settings',
+  PROFILES = 'profiles',
 }

@@ -25,6 +25,7 @@
       "@feed/*": ["src/app/features/feed/*"],
       "@article/*": ["src/app/features/article/*"],
       "@settings/*": ["src/app/features/settings/*"],
+      "@user-profile/*": ["src/app/features/user-profile/*"],
       "@ui/*": ["src/app/features/ui/*"],
       "@store/*": ["src/app/store/*"],
       "@core/*": ["src/app/core/*"],

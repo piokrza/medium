@@ -13,9 +13,10 @@ import * as authEffects from '@store/auth/effects';
 import * as feedEffects from '@store/feed/effects';
 import * as popularTagsEffects from '@store/popular-tags/effects';
 import { ROOT_REDUCER } from '@store/root-reducer';
+import * as userProfileEffects from '@store/user-profile/effects';
 import { routes } from 'src/app/app.routes';
 
-const StoreEffects: Array<any> = [authEffects, feedEffects, popularTagsEffects, articleEffects, addToFavoritesEffects];
+const StoreEffects: Array<any> = [authEffects, feedEffects, popularTagsEffects, articleEffects, addToFavoritesEffects, userProfileEffects];
 const Interceptors: Array<any> = [authInterceptor];
 
 export const appConfig: ApplicationConfig = {

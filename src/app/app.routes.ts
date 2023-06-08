@@ -61,4 +61,18 @@ export const routes: Routes = [
       },
     ],
   },
+  {
+    path: Route.PROFILES,
+    loadComponent: () => import('@user-profile/user-profile-view.component'),
+    children: [
+      {
+        path: RouteFragment.SLUG,
+        loadComponent: () => import('@user-profile/pages/user-profile/user-profile.component'),
+      },
+      {
+        path: `${RouteFragment.SLUG}/${RouteFragment.FAVORITES}`,
+        loadComponent: () => import('@user-profile/pages/user-profile/user-profile.component'),
+      },
+    ],
+  },
 ];

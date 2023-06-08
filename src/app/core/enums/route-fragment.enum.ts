@@ -3,4 +3,5 @@ export enum RouteFragment {
   LOGIN = 'login',
   SLUG = ':slug',
   NEW = 'new',
+  FAVORITES = 'favorites',
 }
