@@ -1,11 +1,13 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { UpdateArticleSuccessMessage } from '@article/constants/article-messages';
 import { ArticleService } from '@article/services/article.service';
 import { Route } from '@core/enums/route.enum';
 import { Article } from '@core/models/article.model';
 import { BackendErrors } from '@core/models/backend-errors.model';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { SnackbarService } from '@shared/components/snackbar/services/snackbar.service';
 import { ArticleActions } from '@store/article';
 import { catchError, exhaustMap, map, of, tap } from 'rxjs';
 
@@ -93,12 +95,13 @@ export const redirectAfterCreateArticle = createEffect(
 );
 
 export const updateArticle = createEffect(
-  (actions$ = inject(Actions), articleService = inject(ArticleService)) => {
+  (actions$ = inject(Actions), articleService = inject(ArticleService), snackbar = inject(SnackbarService)) => {
     return actions$.pipe(
       ofType(ArticleActions.updateArticle),
       exhaustMap(({ articlePayload, slug }) => {
         return articleService.updateArticle$(slug, articlePayload).pipe(
           map((article: Article) => {
+            snackbar.openSnackbar({ message: UpdateArticleSuccessMessage, type: 'success' });
             return ArticleActions.updateArticleSuccess({ article });
           }),
           catchError((err: HttpErrorResponse) => {
