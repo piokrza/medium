@@ -1,7 +1,7 @@
 import { routerNavigatedAction } from '@ngrx/router-store';
 import { createReducer, on } from '@ngrx/store';
+import { UserProfileActions } from '@store/user-profile';
 import { UserProfile } from '@user-profile/models/user-profile.model';
-import { UserProfileActions } from '.';
 
 export const FeatureKey = 'user-profile';
 

@@ -1,1 +1,9 @@
-<p>user-profile works!</p>
+<ng-container *ngIf="userProfileDataSet$ | async as data">
+  <div *ngIf="data.userProfile">
+    <div></div>
+  </div>
+
+  <h1>User Profile page</h1>
+
+  <app-feed [apiUrl]="apiUrl"></app-feed>
+</ng-container>

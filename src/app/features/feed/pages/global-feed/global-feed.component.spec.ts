@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import GlobalFeedComponent from '@global-feed/global-feed.component';
+import GlobalFeedComponent from '@feed/pages/global-feed/global-feed.component';
 
 describe('GlobalFeedComponent', () => {
   let component: GlobalFeedComponent;
