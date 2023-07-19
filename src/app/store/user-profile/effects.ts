@@ -10,7 +10,7 @@ export const getUserProfile = createEffect(
     return actions$.pipe(
       ofType(UserProfileActions.getUserProfile),
       exhaustMap(({ slug }) => {
-        return userProfileService.getUserProfile$(slug).pipe(
+        return userProfileService.loadUserProfile$(slug).pipe(
           map((userProfile: UserProfile) => {
             return UserProfileActions.getUserProfileSuccess({ userProfile });
           }),

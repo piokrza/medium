@@ -10,7 +10,7 @@ export const getFeed = createEffect(
     return actions$.pipe(
       ofType(FeedActions.getFeed),
       exhaustMap(({ url }) => {
-        return feedService.getFeed$(url).pipe(
+        return feedService.loadFeed$(url).pipe(
           map((feed: GetFeedResponse) => {
             return FeedActions.getFeedSuccess({ feed });
           }),

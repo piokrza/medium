@@ -6,7 +6,7 @@ import { SettingsForm } from '@settings/models/settings-form.model';
 export class SettingsFormService {
   private readonly formBuilder: FormBuilder = inject(FormBuilder);
 
-  public getSettingsForm(): FormGroup<SettingsForm> {
+  public get settingsForm(): FormGroup<SettingsForm> {
     return this.formBuilder.nonNullable.group({
       image: '',
       username: ['', [Validators.required]],

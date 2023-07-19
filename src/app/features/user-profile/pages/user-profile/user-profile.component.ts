@@ -27,7 +27,7 @@ export default class UserProfileComponent extends DestroyComponent implements On
 
   private slug: string = '';
 
-  public userProfileDataSet$: Observable<UserProfileDataSet> = this.userProfileService.getUserProfileDataSet$();
+  public userProfileDataSet$: Observable<UserProfileDataSet> = this.userProfileService.userProfileDataSet$;
 
   public ngOnInit(): void {
     this.route.params.pipe(takeUntil(this.destroy$)).subscribe({

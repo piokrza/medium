@@ -8,7 +8,7 @@ export class PopularTagsService {
   private readonly http: HttpClient = inject(HttpClient);
   private readonly baseUrl: string = environment.baseApiUrl;
 
-  public getPopularTags$(): Observable<string[]> {
+  public loadPopularTags$(): Observable<string[]> {
     return this.http.get<{ tags: string[] }>(`${this.baseUrl}/tags`).pipe(map(({ tags }): string[] => tags));
   }
 }

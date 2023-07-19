@@ -6,7 +6,7 @@ import { ArticleForm } from '@article/models/article-form.model';
 export class ArticleFormService {
   private readonly fb: FormBuilder = inject(FormBuilder);
 
-  public getArticleForm(): FormGroup<ArticleForm> {
+  public get articleForm(): FormGroup<ArticleForm> {
     return this.fb.nonNullable.group({
       title: ['', [Validators.required]],
       description: ['', [Validators.required]],

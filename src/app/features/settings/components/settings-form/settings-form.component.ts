@@ -42,7 +42,7 @@ export class SettingsFormComponent extends DestroyComponent implements OnInit {
   private readonly store: Store = inject(Store);
 
   private currentUser!: CurrentUser;
-  public readonly form: FormGroup<SettingsForm> = this.settingsFormService.getSettingsForm();
+  public readonly form: FormGroup<SettingsForm> = this.settingsFormService.settingsForm;
 
   constructor(@Self() private readonly settingsFormService: SettingsFormService) {
     super();

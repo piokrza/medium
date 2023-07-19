@@ -11,7 +11,7 @@ export class ArticleService {
   private readonly http: HttpClient = inject(HttpClient);
   private readonly baseUrl: string = environment.baseApiUrl;
 
-  public getArticle$(slug: string): Observable<Article> {
+  public loadArticle$(slug: string): Observable<Article> {
     return this.http.get<ArticleRequest>(`${this.baseUrl}/articles/${slug}`).pipe(map(({ article }): Article => article));
   }
 

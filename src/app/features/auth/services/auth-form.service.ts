@@ -6,7 +6,7 @@ import { LoginForm, RegisterForm } from '@auth/models/form.model';
 export class AuthFormService {
   private fb: FormBuilder = inject(FormBuilder);
 
-  public getRegisterForm(): FormGroup<RegisterForm> {
+  public get registerForm(): FormGroup<RegisterForm> {
     return this.fb.nonNullable.group({
       username: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
@@ -14,7 +14,7 @@ export class AuthFormService {
     });
   }
 
-  public getLoginForm(): FormGroup<LoginForm> {
+  public get loginForm(): FormGroup<LoginForm> {
     return this.fb.nonNullable.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],

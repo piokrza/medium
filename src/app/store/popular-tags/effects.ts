@@ -9,7 +9,7 @@ export const getPopularTags = createEffect(
     return actions$.pipe(
       ofType(PopularTagsActions.getPopularTags),
       exhaustMap(() => {
-        return popularTagsService.getPopularTags$().pipe(
+        return popularTagsService.loadPopularTags$().pipe(
           map((popularTags) => {
             return PopularTagsActions.getPopularTagsSuccess({ popularTags });
           }),

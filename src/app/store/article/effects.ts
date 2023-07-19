@@ -16,7 +16,7 @@ export const getArticle = createEffect(
     return actions$.pipe(
       ofType(ArticleActions.getArticle),
       exhaustMap(({ slug }) =>
-        articleService.getArticle$(slug).pipe(
+        articleService.loadArticle$(slug).pipe(
           map((article: Article) => {
             return ArticleActions.getArticleSuccess({ article });
           }),

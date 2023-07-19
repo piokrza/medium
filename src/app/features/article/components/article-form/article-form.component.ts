@@ -41,7 +41,7 @@ export default class ArticleFormComponent implements OnInit {
 
   @Output() public formSubmit: EventEmitter<ArticlePayload> = new EventEmitter<ArticlePayload>();
 
-  public form: FormGroup<ArticleForm> = inject(ArticleFormService).getArticleForm();
+  public form: FormGroup<ArticleForm> = inject(ArticleFormService).articleForm;
 
   constructor(@Inject(MAT_DIALOG_DATA) public formData: ArticleFormData, public readonly dialogRef: MatDialogRef<ArticleFormComponent>) {
     if (this.formData) this.mode = this.formData.mode;

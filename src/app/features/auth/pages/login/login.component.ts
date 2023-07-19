@@ -37,8 +37,8 @@ export default class LoginComponent {
   public isSubmitting$: Observable<boolean> = this.store.select(AuthSelectors.isSubmitting);
   public loginErrors$: Observable<BackendErrors | null> = this.store.select(AuthSelectors.errors);
 
-  public loginForm: FormGroup<LoginForm> = inject(AuthFormService).getLoginForm();
-  public authFormMode = AuthFormMode;
+  public loginForm: FormGroup<LoginForm> = inject(AuthFormService).loginForm;
+  public authFormMode: typeof AuthFormMode = AuthFormMode;
 
   public onFormSubmit(user: AuthFormPayload): void {
     this.store.dispatch(AuthActions.login({ request: { user } as LoginRequest }));

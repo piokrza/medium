@@ -16,20 +16,20 @@ export class UserProfileService {
   private readonly store: Store = inject(Store);
   private readonly baseUrl: string = environment.baseApiUrl;
 
-  public getUserProfile$(slug: string): Observable<UserProfile> {
+  public loadUserProfile$(slug: string): Observable<UserProfile> {
     return this.http.get<GetUserProfileResponse>(`${this.baseUrl}/profiles/${slug}`).pipe(map(({ profile }): UserProfile => profile));
   }
 
-  public getUserProfileDataSet$(): Observable<UserProfileDataSet> {
+  public get userProfileDataSet$(): Observable<UserProfileDataSet> {
     return combineLatest({
       userProfile: this.store.select(UserProfileSelectors.userProfile),
       isLoading: this.store.select(UserProfileSelectors.isLoading),
       error: this.store.select(UserProfileSelectors.error),
-      isCurrentUserProfile: this.getIsCurrentUserProfile$(),
+      isCurrentUserProfile: this.isCurrentUserProfile$,
     });
   }
 
-  private getIsCurrentUserProfile$(): Observable<boolean> {
+  private get isCurrentUserProfile$(): Observable<boolean> {
     return combineLatest({
       currentUser: this.store
         .select(AuthSelectors.currentUser)
@@ -38,7 +38,7 @@ export class UserProfileService {
         .select(UserProfileSelectors.userProfile)
         .pipe(filter((userProfile: UserProfile | null): userProfile is UserProfile => Boolean(userProfile))),
     }).pipe(
-      map(({ currentUser, userProfile }: { currentUser: CurrentUser; userProfile: UserProfile }) => {
+      map(({ currentUser, userProfile }: { currentUser: CurrentUser; userProfile: UserProfile }): boolean => {
         return currentUser.username === userProfile.username;
       })
     );

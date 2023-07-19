@@ -37,8 +37,8 @@ export default class RegisterComponent {
   public isSubmitting$: Observable<boolean> = this.store.select(AuthSelectors.isSubmitting);
   public registerErrors$: Observable<BackendErrors | null> = this.store.select(AuthSelectors.errors);
 
-  public readonly registerForm: FormGroup<RegisterForm> = inject(AuthFormService).getRegisterForm();
-  public readonly authFormMode = AuthFormMode;
+  public readonly registerForm: FormGroup<RegisterForm> = inject(AuthFormService).registerForm;
+  public readonly authFormMode: typeof AuthFormMode = AuthFormMode;
 
   public onRegisterFormSubmit(user: AuthFormPayload): void {
     this.store.dispatch(AuthActions.register({ request: { user } as RegisterRequest }));
