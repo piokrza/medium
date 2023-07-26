@@ -1,11 +1,11 @@
 import { inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { CanMatchFn, Router } from '@angular/router';
 import { CurrentUser } from '@auth/models/current-user.model';
 import { Store } from '@ngrx/store';
 import { AuthSelectors } from '@store/auth';
 import { Observable, map, tap } from 'rxjs';
 
-export const authGuard = (): Observable<boolean> => {
+export const authGuard: CanMatchFn = (): Observable<boolean> => {
   const router: Router = inject(Router);
 
   return inject(Store)

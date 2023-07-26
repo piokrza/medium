@@ -1,5 +1,5 @@
-@use '../../../../assets/styles/variables/colors' as color;
-@use '../../../../assets/styles/variables/sizes' as size;
+@use 'src/assets/styles/variables/colors' as color;
+@use 'src/assets/styles/variables/sizes' as size;
 
 footer {
   height: size.$footer-height;

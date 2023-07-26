@@ -4,7 +4,7 @@ import { AccessToken } from '@core/constants/access-token';
 import { PersistanceService } from '@core/services/persistance.service';
 
 export const authInterceptor: HttpInterceptorFn = (request: HttpRequest<unknown>, next: HttpHandlerFn) => {
-  const token = inject(PersistanceService).get(AccessToken);
+  const token = inject(PersistanceService).get(AccessToken) as string | undefined;
 
   request = request.clone({
     setHeaders: { Authorization: token ? `Token ${token}` : '' },

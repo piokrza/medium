@@ -1,4 +1,4 @@
-@use '../../../../assets/styles/variables/sizes' as size;
+@use 'src/assets/styles/variables/sizes' as size;
 
 main {
   min-height: calc(100vh - size.$footer-height - 56px);

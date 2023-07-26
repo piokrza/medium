@@ -42,11 +42,11 @@
 
   <div class="w-full container-max-w-lg desktop">
     <div class="toolbar">
-      <div class="toolbar__logo">Medium</div>
+      <a [routerLink]="['/']" class="toolbar__logo">Medium</a>
 
       <ul class="toolbar__desktop-list">
         <li>
-          <a [routerLink]="['/']" class="toolbar__desktop-link">Home</a>
+          <a class="toolbar__desktop-link">Home</a>
         </li>
 
         <ng-container *ngIf="currentUser$ | async as currentUser; else authLinks">
