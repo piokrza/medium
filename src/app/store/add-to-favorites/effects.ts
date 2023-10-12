@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
-import { Article } from '@core/models/article.model';
-import { AddToFavoritesService } from '@feed/services/add-to-favorites.service';
+import { Article } from '@core/models';
+import { AddToFavoritesService } from '@feed/services';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { AddToFavoritesActions } from '@store/add-to-favorites';
 import { Observable, exhaustMap, map, catchError, of } from 'rxjs';

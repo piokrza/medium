@@ -1,4 +1,4 @@
-import { BackendErrors } from '@core/models/backend-errors.model';
+import { BackendErrors } from '@core/models';
 import { routerNavigatedAction } from '@ngrx/router-store';
 import { createReducer, on } from '@ngrx/store';
 import { AuthActions } from '@store/auth';

@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { FeedComponent } from '@feed/components/feed/feed.component';
-import { FeedTogglerComponent } from '@feed/components/feed-toggler/feed-toggler.component';
-import { PopularTagsComponent } from '@shared/components/popular-tags/popular-tags.component';
-import { BannerComponent } from '@ui/banner/banner.component';
+import { FeedComponent } from '@feed/components/feed';
+import { FeedTogglerComponent } from '@feed/components/feed-toggler';
+import { PopularTagsComponent } from '@shared/components/popular-tags';
+import { BannerComponent } from '@ui/banner';
 
 const FeedContainerImports: Array<any> = [BannerComponent, FeedTogglerComponent, PopularTagsComponent, FeedComponent];
 

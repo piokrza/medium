@@ -2,7 +2,7 @@ import { CurrentUserRequest } from '@auth/models/current-user-request.model';
 import { CurrentUser } from '@auth/models/current-user.model';
 import { LoginRequest } from '@auth/models/login-request.model';
 import { RegisterRequest } from '@auth/models/register-request.model';
-import { BackendErrors } from '@core/models/backend-errors.model';
+import { BackendErrors } from '@core/models';
 import { createAction, props } from '@ngrx/store';
 
 export const register = createAction('[Auth] Register', props<{ request: RegisterRequest }>());

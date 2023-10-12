@@ -1,5 +1,4 @@
-import { Article } from '@core/models/article.model';
-import { BackendErrors } from '@core/models/backend-errors.model';
+import { Article, BackendErrors } from '@core/models';
 import { routerNavigatedAction } from '@ngrx/router-store';
 import { createReducer, on } from '@ngrx/store';
 import { ArticleActions } from '@store/article';

@@ -1,4 +1,4 @@
-import { UserProfile } from '@user-profile/models/user-profile.model';
+import { UserProfile } from '@user-profile/models';
 
 export interface GetUserProfileResponse {
   profile: UserProfile;

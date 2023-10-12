@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({ providedIn: 'root' })
-export class FeedService {
+export class FeedApi {
   private readonly http: HttpClient = inject(HttpClient);
   private readonly baseApiUrl: string = environment.baseApiUrl;
 

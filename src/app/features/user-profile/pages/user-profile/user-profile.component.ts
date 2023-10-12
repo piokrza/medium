@@ -2,11 +2,11 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { DestroyComponent } from '@core/abstracts/destroy/destroy.component';
-import { FeedComponent } from '@feed/components/feed/feed.component';
+import { FeedComponent } from '@feed/components/feed';
 import { Store } from '@ngrx/store';
 import { UserProfileActions } from '@store/user-profile';
-import { UserProfileDataSet } from '@user-profile/models/user-profile-data-set.model';
-import { UserProfileService } from '@user-profile/services/user-profile.service';
+import { UserProfileDataSet } from '@user-profile/models';
+import { UserProfileService } from '@user-profile/services';
 import { Observable, takeUntil } from 'rxjs';
 
 const UserProfileImports: Array<any> = [CommonModule, FeedComponent];

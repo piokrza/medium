@@ -1,4 +1,4 @@
-import { Article } from '@core/models/article.model';
+import { Article } from '@core/models';
 
 export interface GetFeedResponse {
   articles: Article[];

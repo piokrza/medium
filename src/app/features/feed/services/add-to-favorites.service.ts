@@ -2,8 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { ArticleRequest } from '@article/models/article-request.model';
 import { Article } from '@core/models/article.model';
-import { getArticle } from '@core/utils/get-article';
-import { getFavoritesUrl } from '@core/utils/get-favorites-url';
+import { getArticle, getFavoritesUrl } from '@core/utils';
 import { Observable, map } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })

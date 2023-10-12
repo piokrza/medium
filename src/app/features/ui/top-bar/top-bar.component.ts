@@ -9,7 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { CurrentUser } from '@auth/models/current-user.model';
 import { DestroyComponent } from '@core/abstracts/destroy/destroy.component';
-import { BaseDialogConfig } from '@core/constants/base-dialog.config';
+import { BaseDialogConfig } from '@core/constants';
 import { ConfirmationDialogData } from '@core/models/confirmation-dialog-data.model';
 import { Store } from '@ngrx/store';
 import { ConfirmationDialogComponent } from '@shared/components/confirmation-dialog/confirmation-dialog.component';

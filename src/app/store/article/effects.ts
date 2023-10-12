@@ -1,27 +1,26 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
-import * as articleMessage from '@article/constants/article-messages';
-import { ArticleService } from '@article/services/article.service';
-import { Route } from '@core/enums/route.enum';
-import { Article } from '@core/models/article.model';
-import { BackendErrors } from '@core/models/backend-errors.model';
+import { CreateArticleSuccess, DeleteArticleSuccess, GetArticlesError, UpdateArticleSuccess } from '@article/constants';
+import { ArticleApi } from '@article/services';
+import { Route } from '@core/enums';
+import { Article, BackendErrors } from '@core/models';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { SnackbarService } from '@shared/components/snackbar/services/snackbar.service';
 import { ArticleActions } from '@store/article';
 import { catchError, exhaustMap, map, of, tap } from 'rxjs';
 
 export const getArticle = createEffect(
-  (actions$ = inject(Actions), articleService = inject(ArticleService), snackbar = inject(SnackbarService)) => {
+  (actions$ = inject(Actions), articleApi = inject(ArticleApi), snackbar = inject(SnackbarService)) => {
     return actions$.pipe(
       ofType(ArticleActions.getArticle),
       exhaustMap(({ slug }) =>
-        articleService.loadArticle$(slug).pipe(
+        articleApi.loadArticle$(slug).pipe(
           map((article: Article) => {
             return ArticleActions.getArticleSuccess({ article });
           }),
           catchError(() => {
-            snackbar.openSnackbar({ message: articleMessage.GetArticlesError, type: 'error' });
+            snackbar.openSnackbar({ message: GetArticlesError, type: 'error' });
             return of(ArticleActions.getArticleFailure());
           })
         )
@@ -32,13 +31,13 @@ export const getArticle = createEffect(
 );
 
 export const deleteArticle = createEffect(
-  (actions$ = inject(Actions), articleService = inject(ArticleService), snackbar = inject(SnackbarService)) => {
+  (actions$ = inject(Actions), articleApi = inject(ArticleApi), snackbar = inject(SnackbarService)) => {
     return actions$.pipe(
       ofType(ArticleActions.deleteArticle),
       exhaustMap(({ slug }) =>
-        articleService.deleteArticle$(slug).pipe(
+        articleApi.deleteArticle$(slug).pipe(
           map(() => {
-            snackbar.openSnackbar({ message: articleMessage.DeleteArticleSuccess, type: 'success' });
+            snackbar.openSnackbar({ message: DeleteArticleSuccess, type: 'success' });
             return ArticleActions.deleteArticleSuccess();
           }),
           catchError(() => {
@@ -64,13 +63,13 @@ export const redirectAfterDeleteArticle = createEffect(
 );
 
 export const createArticle = createEffect(
-  (actions$ = inject(Actions), articleService = inject(ArticleService), snackbar = inject(SnackbarService)) => {
+  (actions$ = inject(Actions), articleApi = inject(ArticleApi), snackbar = inject(SnackbarService)) => {
     return actions$.pipe(
       ofType(ArticleActions.createArticle),
       exhaustMap(({ articlePayload }) => {
-        return articleService.createArticle$(articlePayload).pipe(
+        return articleApi.createArticle$(articlePayload).pipe(
           map((article: Article) => {
-            snackbar.openSnackbar({ message: articleMessage.CreateArticleSuccess, type: 'success' });
+            snackbar.openSnackbar({ message: CreateArticleSuccess, type: 'success' });
             return ArticleActions.createArticleSuccess({ article });
           }),
           catchError((err: HttpErrorResponse) => {
@@ -98,13 +97,13 @@ export const redirectAfterCreateArticle = createEffect(
 );
 
 export const updateArticle = createEffect(
-  (actions$ = inject(Actions), articleService = inject(ArticleService), snackbar = inject(SnackbarService)) => {
+  (actions$ = inject(Actions), articleApi = inject(ArticleApi), snackbar = inject(SnackbarService)) => {
     return actions$.pipe(
       ofType(ArticleActions.updateArticle),
       exhaustMap(({ articlePayload, slug }) => {
-        return articleService.updateArticle$(slug, articlePayload).pipe(
+        return articleApi.updateArticle$(slug, articlePayload).pipe(
           map((article: Article) => {
-            snackbar.openSnackbar({ message: articleMessage.UpdateArticleSuccess, type: 'success' });
+            snackbar.openSnackbar({ message: UpdateArticleSuccess, type: 'success' });
             return ArticleActions.updateArticleSuccess({ article });
           }),
           catchError((err: HttpErrorResponse) => {

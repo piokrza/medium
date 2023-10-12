@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { getRange } from '@core/utils/get-range';
+import { getRange } from '@core/utils';
 
 const PaginatorImports: Array<any> = [CommonModule, RouterLink];
 

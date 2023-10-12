@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthActions } from '@store/auth';
-import { LayoutComponent } from '@ui/layout/layout.component';
+import { LayoutComponent } from '@ui/layout';
 
 const AppImports: Array<any> = [CommonModule, RouterOutlet, MatButtonModule, LayoutComponent];
 

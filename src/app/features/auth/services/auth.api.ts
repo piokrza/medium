@@ -1,16 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { AuthResponse } from '@auth/models/auth-response.model';
-import { CurrentUserRequest } from '@auth/models/current-user-request.model';
-import { CurrentUser } from '@auth/models/current-user.model';
-import { LoginRequest } from '@auth/models/login-request.model';
-import { RegisterRequest } from '@auth/models/register-request.model';
+import { AuthResponse, CurrentUserRequest, CurrentUser, LoginRequest, RegisterRequest } from '@auth/models';
 import { getUser } from '@core/utils/get-user';
 import { Observable, map } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({ providedIn: 'root' })
-export class AuthService {
+export class AuthApi {
   private readonly http: HttpClient = inject(HttpClient);
   private readonly baseUrl: string = environment.baseApiUrl;
 

@@ -5,10 +5,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { DestroyComponent } from '@core/abstracts/destroy/destroy.component';
 import { GetFeedResponse } from '@core/models/get-feed-response.model';
-import { FeedCardComponent } from '@feed/components/feed-card/feed-card.component';
+import { FeedCardComponent } from '@feed/components/feed-card';
 import { Store } from '@ngrx/store';
-import { ErrorMessageComponent } from '@shared/components/error-message/error-message.component';
-import { PaginatorComponent } from '@shared/components/paginator/paginator.component';
+import { ErrorMessageComponent } from '@shared/components/error-message';
+import { PaginatorComponent } from '@shared/components/paginator';
 import { FeedActions, FeedSelectors } from '@store/feed';
 import queryString from 'query-string';
 import { Observable, takeUntil } from 'rxjs';
@@ -32,10 +32,10 @@ const FeedImports: Array<any> = [
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FeedComponent extends DestroyComponent implements OnInit, OnChanges {
-  @Input() public apiUrl: string = '';
-
   private readonly store: Store = inject(Store);
   private readonly route: ActivatedRoute = inject(ActivatedRoute);
+
+  @Input() public apiUrl: string = '';
 
   public readonly feedData$: Observable<GetFeedResponse | null> = this.store.select(FeedSelectors.feedData);
   public readonly error$: Observable<string | null> = this.store.select(FeedSelectors.errors);

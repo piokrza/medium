@@ -1,7 +1,7 @@
 import { HttpHandlerFn, HttpInterceptorFn, HttpRequest } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { AccessToken } from '@core/constants/access-token';
-import { PersistanceService } from '@core/services/persistance.service';
+import { AccessToken } from '@core/constants';
+import { PersistanceService } from '@core/services';
 
 export const authInterceptor: HttpInterceptorFn = (request: HttpRequest<unknown>, next: HttpHandlerFn) => {
   const token = inject(PersistanceService).get(AccessToken) as string | undefined;

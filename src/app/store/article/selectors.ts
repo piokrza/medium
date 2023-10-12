@@ -1,5 +1,4 @@
-import { Article } from '@core/models/article.model';
-import { BackendErrors } from '@core/models/backend-errors.model';
+import { Article, BackendErrors } from '@core/models';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { FeatureKey, State as ArticleState } from '@store/article/reducer';
 

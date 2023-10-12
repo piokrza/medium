@@ -5,12 +5,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RouterLink } from '@angular/router';
-import { ErrorMessagesComponent } from '@auth/components/error-messages/error-messages.component';
-import { AuthFormMode } from '@auth/enums/auth-form-mode.enum';
-import { AuthFormPayload } from '@auth/models/auth-form-payload.model';
-import { LoginForm, RegisterForm } from '@auth/models/form.model';
-import { AuthFormService } from '@auth/services/auth-form.service';
-import { BackendErrors } from '@core/models/backend-errors.model';
+import { ErrorMessagesComponent } from '@auth/components/error-messages';
+import { AuthFormMode } from '@auth/enums';
+import { LoginForm, RegisterForm, AuthFormPayload } from '@auth/models';
+import { AuthFormService } from '@auth/services';
+import { BackendErrors } from '@core/models';
 
 const AuthFormImports: Array<any> = [
   CommonModule,

@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SettingsForm } from '@settings/models/settings-form.model';
+import { SettingsForm } from '@settings/models';
 
 @Injectable()
 export class SettingsFormService {

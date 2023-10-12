@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, Self, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { AddToFavoritesService } from '@feed/services/add-to-favorites.service';
+import { AddToFavoritesService } from '@feed/services';
 import { Store } from '@ngrx/store';
 import { AddToFavoritesActions } from '@store/add-to-favorites';
 

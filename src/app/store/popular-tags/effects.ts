@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { PopularTagsService } from '@shared/components/popular-tags/services/popular-tags.service';
+import { PopularTagsService } from '@shared/components/popular-tags/services';
 import { PopularTagsActions } from '@store/popular-tags';
 import { catchError, exhaustMap, map, of } from 'rxjs';
 

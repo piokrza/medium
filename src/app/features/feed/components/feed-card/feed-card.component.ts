@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { RouterLink } from '@angular/router';
-import { Article } from '@core/models/article.model';
-import { AddToFavoritesComponent } from '@feed/components/add-to-favorites/add-to-favorites.component';
-import { TagListComponent } from '@shared/components/tag-list/tag-list.component';
+import { Article } from '@core/models';
+import { AddToFavoritesComponent } from '@feed/components/add-to-favorites';
+import { TagListComponent } from '@shared/components/tag-list';
 
 const FeedCardImports: Array<any> = [RouterLink, CommonModule, MatCardModule, TagListComponent, AddToFavoritesComponent];
 

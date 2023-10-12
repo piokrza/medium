@@ -1,6 +1,5 @@
 import { ArticlePayload } from '@article/models/article-payload.model';
-import { Article } from '@core/models/article.model';
-import { BackendErrors } from '@core/models/backend-errors.model';
+import { Article, BackendErrors } from '@core/models';
 import { createAction, props } from '@ngrx/store';
 
 export const getArticle = createAction('[Article] Get article', props<{ slug: string }>());

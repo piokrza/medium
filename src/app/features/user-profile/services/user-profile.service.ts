@@ -1,12 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { CurrentUser } from '@auth/models/current-user.model';
+import { CurrentUser } from '@auth/models';
 import { Store } from '@ngrx/store';
 import { AuthSelectors } from '@store/auth';
 import { UserProfileSelectors } from '@store/user-profile';
-import { GetUserProfileResponse } from '@user-profile/models/get-user-profile-response.model';
-import { UserProfileDataSet } from '@user-profile/models/user-profile-data-set.model';
-import { UserProfile } from '@user-profile/models/user-profile.model';
+import { GetUserProfileResponse, UserProfile, UserProfileDataSet } from '@user-profile/models';
 import { Observable, combineLatest, filter, map } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CurrentUserRequest } from '@auth/models/current-user-request.model';
 import { Store } from '@ngrx/store';
-import { SettingsFormComponent } from '@settings/components/settings-form/settings-form.component';
+import { SettingsFormComponent } from '@settings/components/settings-form';
 import { AuthActions } from '@store/auth';
 
 const SettingsImports: Array<any> = [CommonModule, SettingsFormComponent];

@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
 import ArticleFormComponent from '@article/components/article-form/article-form.component';
 import { ArticleFormMode } from '@article/enums/article-form-mode.enum';
 import { ArticlePayload } from '@article/models/article-payload.model';
-import { BackendErrors } from '@core/models/backend-errors.model';
+import { BackendErrors } from '@core/models';
 import { Store } from '@ngrx/store';
 import { ArticleActions, ArticleSelectors } from '@store/article';
 import { Observable } from 'rxjs';

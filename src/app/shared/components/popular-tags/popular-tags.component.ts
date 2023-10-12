@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/cor
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { ErrorMessageComponent } from '@shared/components/error-message/error-message.component';
+import { ErrorMessageComponent } from '@shared/components/error-message';
 import { PopularTagsActions, PopularTagsSelectors } from '@store/popular-tags';
 import { Observable } from 'rxjs';
 

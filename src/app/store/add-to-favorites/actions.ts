@@ -1,4 +1,4 @@
-import { Article } from '@core/models/article.model';
+import { Article } from '@core/models';
 import { createAction, props } from '@ngrx/store';
 
 export const addToFavorites = createAction('[Favorites] Add to favorites', props<{ isFavorited: boolean; slug: string }>());

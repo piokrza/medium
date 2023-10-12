@@ -1,16 +1,16 @@
 import { inject } from '@angular/core';
-import { GetFeedResponse } from '@core/models/get-feed-response.model';
-import { FeedService } from '@feed/services/feed.service';
+import { GetFeedResponse } from '@core/models';
+import { FeedApi } from '@feed/services';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { FeedActions } from '@store/feed';
 import { catchError, exhaustMap, map, of } from 'rxjs';
 
 export const getFeed = createEffect(
-  (actions$ = inject(Actions), feedService = inject(FeedService)) => {
+  (actions$ = inject(Actions), feedApi = inject(FeedApi)) => {
     return actions$.pipe(
       ofType(FeedActions.getFeed),
       exhaustMap(({ url }) => {
-        return feedService.loadFeed$(url).pipe(
+        return feedApi.loadFeed$(url).pipe(
           map((feed: GetFeedResponse) => {
             return FeedActions.getFeedSuccess({ feed });
           }),

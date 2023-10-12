@@ -2,10 +2,7 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <h1 class="title">{{ mode | titlecase }} article</h1>
     <ng-container *ngIf="errors">
-      <pre>
-
-        {{ errors | json }}
-      </pre>
+      <pre>{{ errors | json }}</pre>
     </ng-container>
 
     <mat-form-field class="w-full" appearance="fill">

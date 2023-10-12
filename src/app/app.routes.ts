@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
-import { RouteFragment } from '@core/enums/route-fragment.enum';
-import { Route } from '@core/enums/route.enum';
-import { authGuard } from '@core/guards/auth.guard';
+import { Route, RouteFragment } from '@core/enums';
+import { authGuard } from '@core/guards';
 
 export const routes: Routes = [
   {

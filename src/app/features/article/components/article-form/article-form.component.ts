@@ -12,7 +12,7 @@ import { ArticleFormData } from '@article/models/article-form-data.model';
 import { ArticleForm } from '@article/models/article-form.model';
 import { ArticlePayload } from '@article/models/article-payload.model';
 import { ArticleFormService } from '@article/services/article-form.service';
-import { BackendErrors } from '@core/models/backend-errors.model';
+import { BackendErrors } from '@core/models';
 
 const ArticleFormImports: Array<any> = [
   CommonModule,

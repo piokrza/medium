@@ -2,12 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { ArticlePayload } from '@article/models/article-payload.model';
 import { ArticleRequest } from '@article/models/article-request.model';
-import { Article } from '@core/models/article.model';
+import { Article } from '@core/models';
 import { Observable, map } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({ providedIn: 'root' })
-export class ArticleService {
+export class ArticleApi {
   private readonly http: HttpClient = inject(HttpClient);
   private readonly baseUrl: string = environment.baseApiUrl;
 

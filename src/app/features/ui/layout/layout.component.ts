@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FooterComponent } from '@ui/footer/footer.component';
-import { TopBarComponent } from '@ui/top-bar/top-bar.component';
+import { FooterComponent } from '@ui/footer';
+import { TopBarComponent } from '@ui/top-bar';
 
 const LayoutImports: Array<any> = [TopBarComponent, FooterComponent];
 

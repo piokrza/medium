@@ -1,4 +1,3 @@
-import { BackendErrors } from '@core/models/backend-errors.model';
 import { createAction, props } from '@ngrx/store';
 import { UserProfile } from '@user-profile/models/user-profile.model';
 
